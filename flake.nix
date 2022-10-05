@@ -42,5 +42,17 @@
 
   outputs = { self, digga, nixos, ... }@inputs:
     let lib = import ./lib { lib = digga.lib // nixos.lib; };
-    in digga.lib.mkFlake { inherit self inputs; };
+    in digga.lib.mkFlake {
+      inherit self inputs;
+
+      channelsConfig = { allowUnfree = true; };
+
+      channels = {
+        nixos = {
+          imports = [ (digga.lib.importOverlays ./overlays) ];
+          overlays = [ ];
+        };
+        latest = { };
+      };
+    };
 }
