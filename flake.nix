@@ -40,7 +40,7 @@
     nixos-generators.url = "github:nix-community/nixos-generators";
   };
 
-  outputs = { self, digga, nixos, ... }@inputs:
+  outputs = { self, digga, nixos, home, ... }@inputs:
     let lib = import ./lib { lib = digga.lib // nixos.lib; };
     in digga.lib.mkFlake {
       inherit self inputs;
@@ -66,6 +66,7 @@
             { lib.our = self.lib; }
             digga.nixosModules.bootstrapIso
             digga.nixosModules.nixConfig
+            home.nixosModules.home-manager
           ];
         };
 
@@ -80,6 +81,19 @@
           suites = with profiles; rec { base = [ core ]; };
         };
       };
+
+      home = {
+        users = digga.lib.rakeLeaves ./users/home;
+
+        imports = [ (digga.lib.importExportableModules ./modules/home) ];
+        modules = [ ];
+        importables = rec {
+          profiles = digga.lib.rakeLeaves ./profiles/home;
+          suites = with profiles; rec { base = [ ]; };
+        };
+      };
+      homeConfigurations =
+        digga.lib.mkHomeConfigurations self.nixosConfigurations;
 
       devshell = ./shell;
     };
