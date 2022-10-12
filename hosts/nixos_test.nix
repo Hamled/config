@@ -1,4 +1,4 @@
-{ modulesPath, profiles, suites, lib, pkgs, ... }: {
+{ modulesPath, profiles, suites, lib, pkgs, config, ... }: {
   imports =
     [ "${modulesPath}/profiles/qemu-guest.nix" profiles.users.nixos-test ]
     ++ suites.base;
