@@ -71,6 +71,14 @@
 
         imports = [ (digga.lib.importHosts ./hosts) ];
         hosts = { };
+
+        importables = rec {
+          profiles = digga.lib.rakeLeaves ./profiles // {
+            users = digga.lib.rakeLeaves ./users;
+          };
+
+          suites = with profiles; rec { base = [ core ]; };
+        };
       };
     };
 }
