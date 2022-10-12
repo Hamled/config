@@ -54,5 +54,7 @@
         };
         latest = { };
       };
+
+      sharedOverlays = (lib.sharedOverlays self) ++ [ ];
     };
 }
