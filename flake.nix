@@ -89,7 +89,7 @@
         modules = [ ];
         importables = rec {
           profiles = digga.lib.rakeLeaves ./profiles/home;
-          suites = with profiles; rec { base = [ ]; };
+          suites = with profiles; rec { base = [ direnv ]; };
         };
       };
       homeConfigurations =
