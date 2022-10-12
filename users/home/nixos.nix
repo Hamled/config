@@ -1,0 +1,1 @@
+{ suites, ... }: { imports = suites.base; }
