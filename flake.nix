@@ -68,6 +68,9 @@
             digga.nixosModules.nixConfig
           ];
         };
+
+        imports = [ (digga.lib.importHosts ./hosts) ];
+        hosts = { };
       };
     };
 }
