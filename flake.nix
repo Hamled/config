@@ -61,7 +61,7 @@
         hostDefaults = {
           system = "x86_64-linux";
           channelName = "nixos";
-          imports = [ (digga.lib.importExportableModules ./modules) ];
+          imports = [ (digga.lib.importExportableModules ./modules/nixos) ];
           modules = [
             { lib.our = self.lib; }
             digga.nixosModules.bootstrapIso
@@ -69,12 +69,12 @@
           ];
         };
 
-        imports = [ (digga.lib.importHosts ./hosts) ];
         hosts = { };
 
+        imports = [ (digga.lib.importHosts ./hosts) ];
         importables = rec {
-          profiles = digga.lib.rakeLeaves ./profiles // {
-            users = digga.lib.rakeLeaves ./users;
+          profiles = digga.lib.rakeLeaves ./profiles/nixos // {
+            users = digga.lib.rakeLeaves ./users/nixos;
           };
 
           suites = with profiles; rec { base = [ core ]; };
