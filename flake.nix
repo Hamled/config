@@ -56,5 +56,18 @@
       };
 
       sharedOverlays = (lib.sharedOverlays self) ++ [ ];
+
+      nixos = {
+        hostDefaults = {
+          system = "x86_64-linux";
+          channelName = "nixos";
+          imports = [ (digga.lib.importExportableModules ./modules) ];
+          modules = [
+            { lib.our = self.lib; }
+            digga.nixosModules.bootstrapIso
+            digga.nixosModules.nixConfig
+          ];
+        };
+      };
     };
 }
