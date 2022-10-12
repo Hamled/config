@@ -80,5 +80,7 @@
           suites = with profiles; rec { base = [ core ]; };
         };
       };
+
+      devshell = ./shell;
     };
 }
