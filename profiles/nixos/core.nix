@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  imports = [ ./cachix ];
+
   environment = {
     systemPackages = with pkgs; [ binutils coreutils curl git gptfdisk ];
   };
