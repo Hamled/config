@@ -92,8 +92,6 @@
           suites = with profiles; rec { base = [ core ]; };
         };
       };
-      homeConfigurations =
-        digga.lib.mkHomeConfigurations self.nixosConfigurations;
 
       devshell = ./shell;
     };
