@@ -1,1 +1,4 @@
-{ suites, ... }: { imports = suites.base; }
+{ suites, pkgs, ... }: {
+  imports = suites.base;
+  home.packages = with pkgs; [ hello ];
+}
