@@ -5,7 +5,6 @@
   ] ++ suites.base;
 
   # Nix configuration
-  system.copySystemConfiguration = true;
   system.stateVersion = "22.05";
 
   # System configuration
