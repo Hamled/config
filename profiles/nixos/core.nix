@@ -13,6 +13,8 @@
     ];
   };
 
+  users.mutableUsers = true;
+
   nix = {
     systemFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
     useSandbox = true;
