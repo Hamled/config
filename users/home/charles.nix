@@ -32,6 +32,10 @@
       extraOptions = [
         "--unsupported-gpu"
       ];
+
+      config = {
+        modifier = "Mod4";
+      };
     };
   };
 }
