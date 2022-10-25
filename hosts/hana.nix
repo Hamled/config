@@ -30,6 +30,8 @@
     gnome.adwaita-icon-theme
   ];
 
+  security.polkit.enable = true;
+
   # Networking
   networking = {
     useDHCP = lib.mkDefault true;
