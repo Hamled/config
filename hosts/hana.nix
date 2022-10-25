@@ -15,6 +15,8 @@
   services.xserver = {
     layout = "us";
     xkbOptions = "ctrl:nocaps";
+
+    videoDrivers = [ "nvidia" ];
   };
 
   console = {
@@ -81,6 +83,12 @@
     trackpoint = {
       enable = true;
       device = "TPPS/2 Elan TrackPoint";
+    };
+
+    opengl.enable = true;
+    nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      modesetting.enable = true;
     };
   };
 }
