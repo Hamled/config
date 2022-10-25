@@ -35,11 +35,26 @@
 
       config = {
         modifier = "Mod4";
+
+        seat = {
+          seat0 = {
+              xcursor_theme = "Adwaita";
+          };
+        };
       };
     };
   };
 
   gtk = {
     enable = true;
+    theme = {
+      package = pkgs.gnome.gnome-themes-extra;
+      name = "Adwaita";
+    };
+
+    iconTheme = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
+    };
   };
 }

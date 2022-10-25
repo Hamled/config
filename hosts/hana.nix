@@ -25,6 +25,7 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
+    gnome.adwaita-icon-theme
   ];
 
   # Networking
@@ -41,6 +42,10 @@
 
   programs = {
     dconf.enable = true;
+  };
+
+  xdg = {
+    icons.enable = true;
   };
 
   # Bootloader
