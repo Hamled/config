@@ -36,8 +36,12 @@
     };
   };
 
-  # OpenSSH
+  # Programs & Services
   services.openssh.enable = true;
+
+  programs = {
+    dconf.enable = true;
+  };
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
