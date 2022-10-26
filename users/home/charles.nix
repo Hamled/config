@@ -25,7 +25,20 @@
       };
     };
 
-    alacritty.enable = true;
+    alacritty = {
+      enable = true;
+      settings.font = let
+        fontFamily = "DejaVu Sans Mono";
+      in {
+        size = 16.0;
+
+        normal.family = fontFamily;
+        bold.family = fontFamily;
+        italic.family = fontFamily;
+        bold_italic.family = fontFamily;
+      };
+    };
+
     firefox.enable = true;
   };
 
@@ -36,9 +49,20 @@
         "--unsupported-gpu"
       ];
 
-      config = {
+      config = let
+        fontsSetting = {
+          names = [ "DejaVu Sans Mono" ];
+          size = 16.0;
+        };
+      in {
         modifier = "Mod4";
+        fonts = fontsSetting;
+
         terminal = "alacritty";
+
+        bars = [{
+          fonts = fontsSetting;
+        }];
 
         seat = {
           seat0 = {
