@@ -35,6 +35,10 @@
     icons.enable = true;
   };
 
+  fonts.fonts = with pkgs; [
+    nerdfonts
+  ];
+
   environment.systemPackages = with pkgs; [
     vim
     wget
