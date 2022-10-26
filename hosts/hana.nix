@@ -24,6 +24,17 @@
     useXkbConfig = true;
   };
 
+  # Programs & Services
+  services.openssh.enable = true;
+
+  programs = {
+    dconf.enable = true;
+  };
+
+  xdg = {
+    icons.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -39,17 +50,6 @@
       enable = true;
       wifi.backend = "iwd";
     };
-  };
-
-  # Programs & Services
-  services.openssh.enable = true;
-
-  programs = {
-    dconf.enable = true;
-  };
-
-  xdg = {
-    icons.enable = true;
   };
 
   # Bootloader
