@@ -24,6 +24,8 @@
         };
       };
     };
+
+    alacritty.enable = true;
   };
 
   wayland = {
@@ -35,6 +37,7 @@
 
       config = {
         modifier = "Mod4";
+        terminal = "alacritty";
 
         seat = {
           seat0 = {
