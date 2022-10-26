@@ -16,7 +16,7 @@
     layout = "us";
     xkbOptions = "ctrl:nocaps";
 
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "modesetting" ];
   };
 
   console = {
@@ -56,7 +56,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "thunderbolt" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" "i915" ];
+  boot.kernelParams = [ "i915.force_probe=4688"];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   # Root is encrypted
@@ -88,9 +89,6 @@
     };
 
     opengl.enable = true;
-    nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      modesetting.enable = true;
-    };
+    nvidiaOptimus.disable = true;
   };
 }
