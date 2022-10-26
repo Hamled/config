@@ -1,7 +1,14 @@
 { suites, pkgs, ... }: {
   imports = suites.base;
 
-  programs = {
+  programs = let
+    dotFiles = ../dotfiles/charles;
+  in {
+    doom-emacs = {
+      enable = true;
+      doomPrivateDir = "${dotFiles}/doom.d";
+    };
+
     bash = {
       enable = true;
       initExtra = ''
