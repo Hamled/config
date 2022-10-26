@@ -26,6 +26,7 @@
     };
 
     alacritty.enable = true;
+    firefox.enable = true;
   };
 
   wayland = {
