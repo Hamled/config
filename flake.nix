@@ -38,6 +38,8 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     nixos-generators.url = "github:nix-community/nixos-generators";
+
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
   outputs = { self, digga, nixos, home, ... }@inputs:
@@ -86,7 +88,7 @@
         users = digga.lib.rakeLeaves ./users/home;
 
         imports = [ (digga.lib.importExportableModules ./modules/home) ];
-        modules = [ ];
+        modules = [ inputs.nix-doom-emacs.hmModule ];
         importables = rec {
           profiles = digga.lib.rakeLeaves ./profiles/home;
           suites = with profiles; rec { base = [ core ]; };
