@@ -61,4 +61,6 @@
       name = "Adwaita";
     };
   };
+
+  fonts.fontconfig.enable = true;
 }
