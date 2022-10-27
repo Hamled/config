@@ -16,6 +16,21 @@
       '';
     };
 
+    git = {
+      enable = true;
+      userName = "Charles Ellis";
+      userEmail = "cellis@securityinnovation.com";
+
+      includes = [{
+        condition = "gitdir:~/projects/personal/";
+        contents = {
+          user.email = "hamled@hamled.dev";
+        };
+      }];
+
+      extraConfig.init.defaultBranch = "main";
+    };
+
     ssh = {
       enable = true;
 
