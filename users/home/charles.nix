@@ -29,6 +29,12 @@
           user = "git";
           identityFile = "~/.ssh/github_ed25519";
         };
+
+        GitLab = defaults // {
+          host = "gitlab.com";
+          user = "git";
+          identityFile = "~/.ssh/gitlab_ed25519";
+        };
       };
     };
 
