@@ -35,9 +35,13 @@
     icons.enable = true;
   };
 
-  fonts.fonts = with pkgs; [
-    nerdfonts
-  ];
+  fonts = {
+    fontconfig.enable = true;
+
+    fonts = with pkgs; [
+      nerdfonts
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     vim
