@@ -122,5 +122,6 @@
     jdk
     jdt-language-server
     nixfmt
+    yaml-language-server
   ];
 }
