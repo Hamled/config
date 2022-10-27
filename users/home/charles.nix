@@ -16,6 +16,21 @@
       '';
     };
 
+    git = {
+      enable = true;
+      userName = "Charles Ellis";
+      userEmail = "cellis@securityinnovation.com";
+
+      includes = [{
+        condition = "gitdir:~/projects/personal/";
+        contents = {
+          user.email = "hamled@hamled.dev";
+        };
+      }];
+
+      extraConfig.init.defaultBranch = "main";
+    };
+
     ssh = {
       enable = true;
 
@@ -28,6 +43,12 @@
           host = "github.com";
           user = "git";
           identityFile = "~/.ssh/github_ed25519";
+        };
+
+        GitLab = defaults // {
+          host = "gitlab.com";
+          user = "git";
+          identityFile = "~/.ssh/gitlab_ed25519";
         };
       };
     };
