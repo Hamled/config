@@ -20,4 +20,6 @@
   };
 
   programs.ssh.startAgent = true;
+
+  security.pam.services.swaylock = {};
 }

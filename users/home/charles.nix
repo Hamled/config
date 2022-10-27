@@ -1,4 +1,4 @@
-{ suites, pkgs, ... }: {
+{ suites, pkgs, lib, config, ... }: {
   imports = suites.base;
 
   programs = let
@@ -64,8 +64,13 @@
       in {
         modifier = "Mod4";
         fonts = fontsSetting;
-
         terminal = "alacritty";
+
+        keybindings = let
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in lib.mkOptionDefault {
+          "${modifier}+BackSpace" = "exec ${pkgs.swaylock}/bin/swaylock";
+        };
 
         bars = [{
           fonts = fontsSetting;
@@ -101,7 +106,12 @@
 
   fonts.fontconfig.enable = true;
 
+  xdg.configFile."swaylock/config".text = ''
+    color=0f0f0f
+  '';
+
   home.packages = with pkgs; [
     wl-clipboard
+    swaylock
   ];
 }
