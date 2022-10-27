@@ -1,8 +1,7 @@
 { modulesPath, profiles, suites, lib, pkgs, config, ... }: {
-  imports = [
-    "${modulesPath}/installer/scan/not-detected.nix"
-    profiles.users.charles
-  ] ++ suites.base;
+  imports =
+    [ "${modulesPath}/installer/scan/not-detected.nix" profiles.users.charles ]
+    ++ suites.base;
 
   # Nix configuration
   system.stateVersion = "22.05";
@@ -27,27 +26,17 @@
   # Programs & Services
   services.openssh.enable = true;
 
-  programs = {
-    dconf.enable = true;
-  };
+  programs = { dconf.enable = true; };
 
-  xdg = {
-    icons.enable = true;
-  };
+  xdg = { icons.enable = true; };
 
   fonts = {
     fontconfig.enable = true;
 
-    fonts = with pkgs; [
-      nerdfonts
-    ];
+    fonts = with pkgs; [ nerdfonts ];
   };
 
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    gnome.adwaita-icon-theme
-  ];
+  environment.systemPackages = with pkgs; [ vim wget gnome.adwaita-icon-theme ];
 
   security.polkit.enable = true;
 
@@ -63,13 +52,15 @@
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "thunderbolt" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "nvme" "thunderbolt" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "i915" ];
-  boot.kernelParams = [ "i915.force_probe=4688"];
+  boot.kernelParams = [ "i915.force_probe=4688" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   # Root is encrypted
-  boot.initrd.luks.devices.sys.device = "/dev/disk/by-uuid/b5b67eb0-d597-4d5c-80fd-952be392ed0b";
+  boot.initrd.luks.devices.sys.device =
+    "/dev/disk/by-uuid/b5b67eb0-d597-4d5c-80fd-952be392ed0b";
 
   # File systems
 
@@ -83,14 +74,14 @@
     fsType = "vfat";
   };
 
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/fd16660e-0edd-4603-a17a-50a5d0336c23"; }
-  ];
+  swapDevices =
+    [{ device = "/dev/disk/by-uuid/fd16660e-0edd-4603-a17a-50a5d0336c23"; }];
 
   # Hardware configuration
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware = {
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.intel.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
     trackpoint = {
       enable = true;
       device = "TPPS/2 Elan TrackPoint";

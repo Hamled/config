@@ -1,8 +1,7 @@
 { suites, pkgs, lib, config, ... }: {
   imports = suites.base;
 
-  programs = let
-    dotFiles = ../dotfiles/charles;
+  programs = let dotFiles = ../dotfiles/charles;
   in {
     doom-emacs = {
       enable = true;
@@ -23,9 +22,7 @@
 
       includes = [{
         condition = "gitdir:~/projects/personal/";
-        contents = {
-          user.email = "hamled@hamled.dev";
-        };
+        contents = { user.email = "hamled@hamled.dev"; };
       }];
 
       extraConfig.init.defaultBranch = "main";
@@ -38,7 +35,8 @@
         defaults = {
           forwardAgent = false;
           identitiesOnly = true;
-        }; in {
+        };
+      in {
         GitHub = defaults // {
           host = "github.com";
           user = "git";
@@ -55,8 +53,7 @@
 
     alacritty = {
       enable = true;
-      settings.font = let
-        fontFamily = "DejaVu Sans Mono";
+      settings.font = let fontFamily = "DejaVu Sans Mono";
       in {
         size = 16.0;
 
@@ -73,9 +70,7 @@
   wayland = {
     windowManager.sway = {
       enable = true;
-      extraOptions = [
-        "--unsupported-gpu"
-      ];
+      extraOptions = [ "--unsupported-gpu" ];
 
       config = let
         fontsSetting = {
@@ -87,27 +82,17 @@
         fonts = fontsSetting;
         terminal = "alacritty";
 
-        keybindings = let
-          modifier = config.wayland.windowManager.sway.config.modifier;
-        in lib.mkOptionDefault {
-          "${modifier}+BackSpace" = "exec ${pkgs.swaylock}/bin/swaylock";
-        };
-
-        bars = [{
-          fonts = fontsSetting;
-        }];
-
-        input = {
-          "*" = {
-            xkb_options = "ctrl:nocaps";
+        keybindings =
+          let modifier = config.wayland.windowManager.sway.config.modifier;
+          in lib.mkOptionDefault {
+            "${modifier}+BackSpace" = "exec ${pkgs.swaylock}/bin/swaylock";
           };
-        };
 
-        seat = {
-          seat0 = {
-              xcursor_theme = "Adwaita";
-          };
-        };
+        bars = [{ fonts = fontsSetting; }];
+
+        input = { "*" = { xkb_options = "ctrl:nocaps"; }; };
+
+        seat = { seat0 = { xcursor_theme = "Adwaita"; }; };
       };
     };
   };
@@ -136,5 +121,6 @@
     swaylock
     jdk
     jdt-language-server
+    nixfmt
   ];
 }
