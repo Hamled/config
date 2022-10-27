@@ -71,6 +71,12 @@
           fonts = fontsSetting;
         }];
 
+        input = {
+          "*" = {
+            xkb_options = "ctrl:nocaps";
+          };
+        };
+
         seat = {
           seat0 = {
               xcursor_theme = "Adwaita";
