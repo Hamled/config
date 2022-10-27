@@ -136,5 +136,6 @@
     swaylock
     jdk
     jdt-language-server
+    nixfmt
   ];
 }
