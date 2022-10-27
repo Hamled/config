@@ -134,5 +134,7 @@
   home.packages = with pkgs; [
     wl-clipboard
     swaylock
+    jdk
+    jdt-language-server
   ];
 }
