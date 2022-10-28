@@ -124,5 +124,6 @@
     nixfmt
     yaml-language-server
     ripgrep
+    slack
   ];
 }
