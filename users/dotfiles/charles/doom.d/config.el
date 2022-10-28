@@ -80,5 +80,7 @@
   (setq
     lsp-java-vmargs
     `(,@lsp-java-vmargs
-       "-Xmx5G")))
+       "-Xmx5G")
+    lsp-java-workspace-dir
+    (expand-file-name lsp-java-workspace-dir)))
 ;;; config.el ends here
