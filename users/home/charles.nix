@@ -123,5 +123,6 @@
     jdt-language-server
     nixfmt
     yaml-language-server
+    ripgrep
   ];
 }
