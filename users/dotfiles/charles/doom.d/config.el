@@ -74,3 +74,11 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+
+(after! lsp-java
+  (setq
+    lsp-java-vmargs
+    `(,@lsp-java-vmargs
+       "-Xmx5G")))
+;;; config.el ends here
