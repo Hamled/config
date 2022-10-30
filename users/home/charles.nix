@@ -116,6 +116,15 @@
     color=0f0f0f
   '';
 
+  home.sessionPath = [ "$HOME/.local/bin" ];
+  home.file.".local/bin/firefox-personal" = {
+    executable = true;
+    text = ''
+      #!${pkgs.bash}/bin/bash
+      exec ${pkgs.firefox}/bin/firefox -P personal "$@"
+    '';
+  };
+
   home.packages = with pkgs; [
     wl-clipboard
     swaylock
