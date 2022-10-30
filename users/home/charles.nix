@@ -125,5 +125,6 @@
     yaml-language-server
     ripgrep
     slack
+    bitwarden
   ];
 }
