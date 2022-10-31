@@ -24,7 +24,15 @@
   };
 
   # Programs & Services
-  services.openssh.enable = true;
+  services = {
+    openssh.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+  };
 
   programs = { dconf.enable = true; };
 
@@ -38,7 +46,10 @@
 
   environment.systemPackages = with pkgs; [ vim wget gnome.adwaita-icon-theme ];
 
-  security.polkit.enable = true;
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+  };
 
   # Networking
   networking = {
