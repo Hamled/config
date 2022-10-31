@@ -135,5 +135,6 @@
     ripgrep
     slack
     bitwarden
+    pavucontrol
   ];
 }
