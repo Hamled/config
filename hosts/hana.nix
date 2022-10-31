@@ -100,5 +100,11 @@
 
     opengl.enable = true;
     nvidiaOptimus.disable = true;
+
+    bluetooth.enable = true;
+    pulseaudio = {
+      extraModules = [ pkgs.pulseaudio-modules-bt ];
+      package = pkgs.pulseaudioFull;
+    };
   };
 }
