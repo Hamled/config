@@ -112,6 +112,8 @@
 
   fonts.fontconfig.enable = true;
 
+  services = { blueman-applet.enable = true; };
+
   xdg.configFile."swaylock/config".text = ''
     color=0f0f0f
   '';
