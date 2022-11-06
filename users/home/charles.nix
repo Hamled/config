@@ -6,6 +6,15 @@
     doom-emacs = {
       enable = true;
       doomPrivateDir = "${dotFiles}/doom.d";
+      extraConfig = ''
+        (after! lsp-java
+          (setq
+            lsp-java-vmargs
+            `(,@lsp-java-vmargs
+              "-javaagent:${pkgs.lombok}/share/java/lombok.jar"
+              "-Xbootclasspath/a:${pkgs.lombok}/share/java/lombok.jar")))
+      '';
+      extraPackages = with pkgs; [ lombok ];
     };
 
     bash = {
