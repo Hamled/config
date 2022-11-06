@@ -139,5 +139,6 @@
     bitwarden
     pavucontrol
     grim
+    zoom-us
   ];
 }
