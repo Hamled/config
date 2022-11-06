@@ -135,27 +135,37 @@
   };
 
   home.sessionPath = [ "$HOME/.local/bin" ];
-  home.file.".local/bin/firefox-personal" = {
-    executable = true;
-    text = ''
-      #!${pkgs.bash}/bin/bash
-      exec ${pkgs.firefox}/bin/firefox -P personal "$@"
+  home.file = {
+    ".local/bin/firefox-personal" = {
+      executable = true;
+      text = ''
+        #!${pkgs.bash}/bin/bash
+        exec ${pkgs.firefox}/bin/firefox -P personal "$@"
+      '';
+    };
+
+    ".gradle/gradle.properties".text = ''
+      org.gradle.java.installations.auto-download=false
+      org.gradle.java.installations.paths=${pkgs.jdk8}/lib/openjdk,${pkgs.jdk}/lib/openjdk
     '';
   };
 
-  home.packages = with pkgs; [
-    wl-clipboard
-    swaylock
-    jdk
-    jdt-language-server
-    nixfmt
-    yaml-language-server
-    ripgrep
-    slack
-    bitwarden
-    pavucontrol
-    grim
-    zoom-us
-    slurp
-  ];
+  home.packages = with pkgs;
+    let jdk8-low = jdk8.overrideAttrs (oldAttrs: { meta.priority = 10; });
+    in [
+      wl-clipboard
+      swaylock
+      jdk
+      jdk8-low
+      jdt-language-server
+      nixfmt
+      yaml-language-server
+      ripgrep
+      slack
+      bitwarden
+      pavucontrol
+      grim
+      zoom-us
+      slurp
+    ];
 }
