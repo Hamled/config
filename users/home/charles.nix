@@ -114,9 +114,16 @@
 
   services = { blueman-applet.enable = true; };
 
-  xdg.configFile."swaylock/config".text = ''
-    color=0f0f0f
-  '';
+  xdg.configFile = {
+    "swaylock/config".text = ''
+      color=0f0f0f
+    '';
+
+    "xdg-desktop-portal-wlr/config".text = ''
+      chooser_type = simple
+      chooser_cmd = slurp -f %o ro
+    '';
+  };
 
   home.sessionPath = [ "$HOME/.local/bin" ];
   home.file.".local/bin/firefox-personal" = {
@@ -140,5 +147,6 @@
     pavucontrol
     grim
     zoom-us
+    slurp
   ];
 }
