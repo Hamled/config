@@ -138,5 +138,6 @@
     slack
     bitwarden
     pavucontrol
+    grim
   ];
 }
