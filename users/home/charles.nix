@@ -57,6 +57,11 @@
           user = "git";
           identityFile = "~/.ssh/gitlab_ed25519";
         };
+
+        AWS = defaults // {
+          host = "*.amazonaws.com";
+          identityFile = "~/.ssh/aws_rsa4k";
+        };
       };
     };
 
