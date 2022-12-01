@@ -177,6 +177,7 @@
       jdt-language-server
       nixfmt
       yaml-language-server
+      nodePackages.vscode-langservers-extracted
       ripgrep
       slack
       bitwarden
