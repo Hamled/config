@@ -185,6 +185,7 @@
       zoom-us
       slurp
       openvpn
+      google-chrome
       jetbrains.idea-ultimate
     ];
 }
