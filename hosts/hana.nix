@@ -70,6 +70,19 @@
     rtkit.enable = true;
   };
 
+  # Allow delegation in user services
+  systemd.packages = [
+    (pkgs.runCommandNoCC "delegate.conf" {
+      preferLocalBuild = true;
+      allowSubstitutes = false;
+    } ''
+      dropInDir=$out/etc/systemd/system/user@.service.d
+      mkdir -p $dropInDir
+      echo "[Service]" >> $dropInDir/delegate.conf
+      echo "Delegate=yes" >> $dropInDir/delegate.conf
+    '')
+  ];
+
   # Networking
   networking = {
     useDHCP = lib.mkDefault true;
