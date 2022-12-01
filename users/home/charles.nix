@@ -180,6 +180,7 @@
       nodePackages.vscode-langservers-extracted
       nodePackages.typescript
       nodePackages.typescript-language-server
+      nodePackages.eslint
       ripgrep
       slack
       bitwarden
