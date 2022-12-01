@@ -51,6 +51,13 @@
     fonts = with pkgs; [ nerdfonts ];
   };
 
+  virtualisation.docker = {
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     wget
