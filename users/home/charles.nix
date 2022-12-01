@@ -178,6 +178,8 @@
       nixfmt
       yaml-language-server
       nodePackages.vscode-langservers-extracted
+      nodePackages.typescript
+      nodePackages.typescript-language-server
       ripgrep
       slack
       bitwarden
