@@ -114,6 +114,9 @@
         # needs qt5.qtwayland in systemPackages
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+        # Fix for some Java AWT applications (e.g. Android Studio),
+        # use this if they aren't displayed properly:
+        export _JAVA_AWT_WM_NONREPARENTING=1
       '';
     };
   };
@@ -156,6 +159,8 @@
       '';
     };
 
+    ".local/bin/firefox-idea".source = "${pkgs.firefox}/bin/firefox";
+
     ".gradle/gradle.properties".text = ''
       org.gradle.java.installations.auto-download=false
       org.gradle.java.installations.paths=${pkgs.jdk8}/lib/openjdk,${pkgs.jdk}/lib/openjdk
@@ -179,5 +184,6 @@
       grim
       zoom-us
       slurp
+      jetbrains.idea-ultimate
     ];
 }
