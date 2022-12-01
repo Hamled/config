@@ -174,13 +174,6 @@
       swaylock
       jdk
       jdk8-low
-      jdt-language-server
-      nixfmt
-      yaml-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodePackages.eslint
       ripgrep
       slack
       bitwarden
@@ -192,5 +185,14 @@
       google-chrome
       unzip
       jetbrains.idea-ultimate
+
+      # Language servers
+      jdt-language-server
+      yaml-language-server
+      nodePackages.vscode-langservers-extracted
+      nodePackages.typescript
+      nodePackages.typescript-language-server
+      nodePackages.eslint
+      nixfmt
     ];
 }
