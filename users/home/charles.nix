@@ -186,6 +186,7 @@
       slurp
       openvpn
       google-chrome
+      unzip
       jetbrains.idea-ultimate
     ];
 }
