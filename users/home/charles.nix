@@ -108,6 +108,12 @@
 
         seat = { seat0 = { xcursor_theme = "Adwaita"; }; };
       };
+
+      extraSessionCommands = ''
+        # needs qt5.qtwayland in systemPackages
+        export QT_QPA_PLATFORM=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      '';
     };
   };
 

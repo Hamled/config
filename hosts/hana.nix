@@ -51,7 +51,12 @@
     fonts = with pkgs; [ nerdfonts ];
   };
 
-  environment.systemPackages = with pkgs; [ vim wget gnome.adwaita-icon-theme ];
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    gnome.adwaita-icon-theme
+    qt5.qtwayland
+  ];
 
   security = {
     polkit.enable = true;
