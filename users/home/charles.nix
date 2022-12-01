@@ -184,6 +184,7 @@
       grim
       zoom-us
       slurp
+      openvpn
       jetbrains.idea-ultimate
     ];
 }
