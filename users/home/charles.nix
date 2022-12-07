@@ -34,6 +34,8 @@
         contents = { user.email = "hamled@hamled.dev"; };
       }];
 
+      ignores = [ ".dir-locals.el" ".projectile" ];
+
       extraConfig.init.defaultBranch = "main";
     };
 
