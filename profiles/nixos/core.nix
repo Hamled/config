@@ -8,6 +8,7 @@
       curl
       git
       gptfdisk
+      lsof
       vim
       wget
     ];
