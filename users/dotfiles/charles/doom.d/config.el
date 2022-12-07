@@ -84,5 +84,6 @@
     `(,@lsp-java-vmargs
        "-Xmx5G")
     lsp-java-workspace-dir
-    (expand-file-name lsp-java-workspace-dir)))
+    (expand-file-name lsp-java-workspace-dir)
+    lsp-java-format-enabled nil))
 ;;; config.el ends here
