@@ -51,12 +51,23 @@
     fonts = with pkgs; [ nerdfonts ];
   };
 
-  virtualisation.docker = {
-    rootless = {
+  virtualisation.docker = let
+    rootless = false;
+
+    docker-config = {
       enable = true;
-      setSocketVariable = true;
+
+      daemon.settings = {
+        default-ulimits = {
+          nofile = {
+            Name = "nofile";
+            Hard = 64000;
+            Soft = 64000;
+          };
+        };
+      };
     };
-  };
+  in { } // (if rootless then { rootless = docker-config; } else docker-config);
 
   environment.systemPackages = with pkgs; [
     vim
