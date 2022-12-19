@@ -187,6 +187,7 @@
       google-chrome
       unzip
       jetbrains.idea-ultimate
+      nodejs
 
       # Language servers
       jdt-language-server
