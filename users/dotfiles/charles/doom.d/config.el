@@ -86,4 +86,11 @@
     lsp-java-workspace-dir
     (expand-file-name lsp-java-workspace-dir)
     lsp-java-format-enabled nil))
+
+;; Use prettier to format typescript
+(setq-hook! 'typescript-mode-hook
+  +format-with-lsp nil)
+(setq-hook! 'typescript-tsx-mode-hook
+  +format-with-lsp nil)
+
 ;;; config.el ends here
