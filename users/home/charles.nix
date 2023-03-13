@@ -193,6 +193,7 @@
       dbeaver
       whois
       jq
+      xh
 
       # Language servers
       jdt-language-server
