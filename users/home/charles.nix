@@ -192,6 +192,7 @@
       nodejs
       dbeaver
       whois
+      jq
 
       # Language servers
       jdt-language-server
