@@ -35,7 +35,13 @@
     blueman.enable = true;
   };
 
-  programs = { dconf.enable = true; };
+  programs = {
+    dconf.enable = true;
+    wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
+  };
 
   xdg = {
     icons.enable = true;
