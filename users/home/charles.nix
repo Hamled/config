@@ -211,7 +211,10 @@
       nodePackages.typescript
       nodePackages.typescript-language-server
       nodePackages.dockerfile-language-server-nodejs
+      nodePackages.bash-language-server
       #rust-analyzer
+      shellcheck
+
       nodePackages.eslint
       nodePackages.prettier
 
