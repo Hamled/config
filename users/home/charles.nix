@@ -102,6 +102,8 @@
           let modifier = config.wayland.windowManager.sway.config.modifier;
           in lib.mkOptionDefault {
             "${modifier}+BackSpace" = "exec ${pkgs.swaylock}/bin/swaylock";
+            "${modifier}+Print" =
+              "exec ${pkgs.grim}/bin/grim -o $(${pkgs.sway}/bin/swaymsg -t get_outputs | ${pkgs.jq}/bin/jq -r '.[] | select(.focused) | .name') ~/Screenshots/$(date +'%F_%T_grim.png')";
           };
 
         bars = [{ fonts = fontsSetting; }];
