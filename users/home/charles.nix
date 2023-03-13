@@ -158,7 +158,7 @@
     ".local/bin/firefox-personal" = {
       executable = true;
       text = ''
-        #!${pkgs.bash}/bin/bash
+        #!/usr/bin/env bash
         exec ${pkgs.firefox}/bin/firefox -P personal "$@"
       '';
     };
