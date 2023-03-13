@@ -194,6 +194,7 @@
       whois
       jq
       xh
+      rustup
 
       # Language servers
       jdt-language-server
