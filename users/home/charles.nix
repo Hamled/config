@@ -165,6 +165,14 @@
 
     ".local/bin/firefox-idea".source = "${pkgs.firefox}/bin/firefox";
 
+    ".local/bin/rust-analyzer" = {
+      executable = true;
+      text = ''
+        #!/usr/bin/env bash
+        exec $(${pkgs.rustup}/bin/rustup which rust-analyzer) "$@"
+      '';
+    };
+
     ".gradle/gradle.properties".text = ''
       org.gradle.java.installations.auto-download=false
       org.gradle.java.installations.paths=${pkgs.jdk8}/lib/openjdk,${pkgs.jdk}/lib/openjdk
@@ -202,8 +210,10 @@
       nodePackages.vscode-langservers-extracted
       nodePackages.typescript
       nodePackages.typescript-language-server
+      #rust-analyzer
       nodePackages.eslint
       nodePackages.prettier
       nixfmt
+      #rustfmt
     ];
 }
