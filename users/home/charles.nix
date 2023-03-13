@@ -190,6 +190,7 @@
       unzip
       jetbrains.idea-ultimate
       nodejs
+      dbeaver
 
       # Language servers
       jdt-language-server
