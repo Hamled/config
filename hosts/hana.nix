@@ -80,6 +80,7 @@
     wget
     gnome.adwaita-icon-theme
     qt5.qtwayland
+    pulseaudioFull
   ];
 
   security = {
