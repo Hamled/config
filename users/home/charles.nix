@@ -220,6 +220,7 @@
 
       nixfmt
       dockfmt
+      black
       #rustfmt
     ];
 }
