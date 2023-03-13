@@ -11,6 +11,7 @@
       lsof
       vim
       wget
+      htop
     ];
   };
 
