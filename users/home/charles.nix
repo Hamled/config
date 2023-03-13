@@ -191,6 +191,7 @@
       jetbrains.idea-ultimate
       nodejs
       dbeaver
+      whois
 
       # Language servers
       jdt-language-server
