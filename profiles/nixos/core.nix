@@ -12,6 +12,10 @@
       vim
       wget
       htop
+
+      man
+      man-pages
+      man-pages-posix
     ];
   };
 
