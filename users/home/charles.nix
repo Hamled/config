@@ -210,10 +210,13 @@
       nodePackages.vscode-langservers-extracted
       nodePackages.typescript
       nodePackages.typescript-language-server
+      nodePackages.dockerfile-language-server-nodejs
       #rust-analyzer
       nodePackages.eslint
       nodePackages.prettier
+
       nixfmt
+      dockfmt
       #rustfmt
     ];
 }
