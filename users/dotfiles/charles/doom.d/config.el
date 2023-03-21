@@ -80,12 +80,25 @@
 
 (after! lsp-java
   (setq
-    lsp-java-vmargs
-    `(,@lsp-java-vmargs
-       "-Xmx5G")
-    lsp-java-workspace-dir
-    (expand-file-name lsp-java-workspace-dir)
-    lsp-java-format-enabled nil))
+   ;; Let jdt.ls use a lot of memory
+   lsp-java-vmargs
+   `(,@lsp-java-vmargs
+     "-Xmx5G")
+
+   ;; Use absolute path for workspace dir
+   lsp-java-workspace-dir
+   (expand-file-name lsp-java-workspace-dir)
+
+   ;; Don't format Java files with LSP
+   lsp-java-format-enabled nil
+
+   ;; Allow Gradle wrappers used by specific projects
+   lsp-java-imports-gradle-wrapper-checksums
+   ;; cmdnctrl/scoreboard/scoreboard-api
+   [(:sha256 "e68185c8c0f67873dcd98916621870266a71584dfb0a2861d87d7077ebc39837"
+     :allowed t)]))
+
+
 
 ;; Use prettier to format typescript
 (setq-hook! 'typescript-mode-hook
