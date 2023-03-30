@@ -39,7 +39,8 @@
 
     nixos-generators.url = "github:nix-community/nixos-generators";
 
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    nix-doom-emacs.url =
+      "github:nix-community/nix-doom-emacs/3c02175dd06714c15ddd2f73708de9b4dacc6aa9";
   };
 
   outputs = { self, digga, nixos, home, ... }@inputs:
