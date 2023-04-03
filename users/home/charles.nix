@@ -12,6 +12,9 @@
             lsp-java-vmargs
             `(,@lsp-java-vmargs
               "-javaagent:/home/charles/.local/share/lombok.jar")
+
+            lsp-java-import-gradle-java-home "${pkgs.jdk11}/lib/openjdk"
+          ))
       '';
     };
 
