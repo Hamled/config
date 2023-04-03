@@ -11,6 +11,12 @@
           (setq
             lsp-java-java-path "${pkgs.jdk}/lib/openjdk/bin/java"
 
+            lsp-java-configuration-runtimes '[
+              (:name "JavaSE-1.8" :path "${pkgs.jdk8}/lib/openjdk")
+              (:name "JavaSE-11" :path "${pkgs.jdk11}/lib/openjdk")
+              (:name "JavaSE-17" :path "${pkgs.jdk17}/lib/openjdk")
+            ]
+
             lsp-java-vmargs
             `(,@lsp-java-vmargs
               "-javaagent:/home/charles/.local/share/lombok.jar")
