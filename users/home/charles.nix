@@ -9,6 +9,8 @@
       extraConfig = ''
         (after! lsp-java
           (setq
+            lsp-java-java-path "${pkgs.jdk}/lib/openjdk/bin/java"
+
             lsp-java-vmargs
             `(,@lsp-java-vmargs
               "-javaagent:/home/charles/.local/share/lombok.jar")
