@@ -173,7 +173,10 @@
 
     ".gradle/gradle.properties".text = ''
       org.gradle.java.installations.auto-download=false
-      org.gradle.java.installations.paths=${pkgs.jdk8}/lib/openjdk,${pkgs.jdk}/lib/openjdk
+      org.gradle.java.installations.paths=${
+        lib.concatMapStringsSep "," (p: "${p}/lib/openjdk")
+        (with pkgs; [ jdk8 jdk11 jdk17 jdk ])
+      }
     '';
 
     ".local/share/lombok.system.jar".source =
