@@ -11,10 +11,8 @@
           (setq
             lsp-java-vmargs
             `(,@lsp-java-vmargs
-              "-javaagent:${pkgs.lombok}/share/java/lombok.jar"
-              "-Xbootclasspath/a:${pkgs.lombok}/share/java/lombok.jar")))
+              "-javaagent:/home/charles/.local/share/lombok.jar")
       '';
-      extraPackages = with pkgs; [ lombok ];
     };
 
     bash = {
@@ -177,6 +175,9 @@
       org.gradle.java.installations.auto-download=false
       org.gradle.java.installations.paths=${pkgs.jdk8}/lib/openjdk,${pkgs.jdk}/lib/openjdk
     '';
+
+    ".local/share/lombok.system.jar".source =
+      "${pkgs.lombok}/share/java/lombok.jar";
   };
 
   home.packages = with pkgs;
