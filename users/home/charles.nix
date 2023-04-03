@@ -162,6 +162,7 @@
     '';
   };
 
+  home.shellAliases.ssh = "TERM=xterm ssh";
   home.sessionPath = [ "$HOME/.local/bin" ];
   home.file = {
     ".local/bin/firefox-personal" = {
