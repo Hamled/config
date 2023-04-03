@@ -73,6 +73,13 @@
           host = "*.amazonaws.com";
           identityFile = "~/.ssh/aws_rsa4k";
         };
+
+        AdaWeb-stage = defaults // {
+          host = "ada-web-stage";
+          hostname = "44.196.159.33";
+          user = "bitnami";
+          identityFile = "~/.ssh/ada_stage_rsa2k";
+        };
       };
     };
 
