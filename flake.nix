@@ -41,6 +41,8 @@
 
     nix-doom-emacs.url =
       "github:nix-community/nix-doom-emacs/3c02175dd06714c15ddd2f73708de9b4dacc6aa9";
+
+    devenv.url = "github:cachix/devenv/latest";
   };
 
   outputs = { self, digga, nixos, home, ... }@inputs:
@@ -53,7 +55,11 @@
       channels = {
         nixos = {
           imports = [ (digga.lib.importOverlays ./overlays) ];
-          overlays = [ ];
+          overlays = [
+            (self: super: {
+              devenv = inputs.devenv.packages.x86_64-linux.devenv;
+            })
+          ];
         };
         latest = { };
       };
