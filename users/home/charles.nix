@@ -226,6 +226,7 @@
       jq
       xh
       rustup
+      devenv
 
       # Language servers
       jdt-language-server
