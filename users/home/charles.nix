@@ -36,11 +36,11 @@
     git = {
       enable = true;
       userName = "Charles Ellis";
-      userEmail = "cellis@securityinnovation.com";
+      userEmail = "hamled@hamled.dev";
 
       includes = [{
-        condition = "gitdir:~/projects/personal/";
-        contents = { user.email = "hamled@hamled.dev"; };
+        condition = "gitdir:~/projects/cmdnctrl/";
+        path = "~/projects/cmdnctrl/.gitconfig";
       }];
 
       ignores = [ ".dir-locals.el" ".projectile" ];
