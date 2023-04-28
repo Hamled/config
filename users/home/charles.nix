@@ -228,6 +228,7 @@
       rustup
       devenv
       discord
+      cloudflare-warp
 
       # Language servers
       jdt-language-server
