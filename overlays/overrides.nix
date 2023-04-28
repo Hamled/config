@@ -1,5 +1,5 @@
 channels: final: prev: {
   __dontExport = true;
 
-  inherit (channels.latest) cachix zoom-us rustup;
+  inherit (channels.latest) cachix zoom-us rustup discord;
 }

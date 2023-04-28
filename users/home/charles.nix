@@ -227,6 +227,7 @@
       xh
       rustup
       devenv
+      discord
 
       # Language servers
       jdt-language-server
