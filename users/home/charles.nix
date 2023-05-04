@@ -39,8 +39,8 @@
       userEmail = "hamled@hamled.dev";
 
       includes = [{
-        condition = "gitdir:~/projects/cmdnctrl/";
-        path = "~/projects/cmdnctrl/.gitconfig";
+        condition = "gitdir:~/projects/si/";
+        path = "~/projects/si/.gitconfig";
       }];
 
       ignores = [ ".dir-locals.el" ".projectile" ];
