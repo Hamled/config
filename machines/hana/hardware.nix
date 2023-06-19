@@ -25,4 +25,24 @@
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/fd16660e-0edd-4603-a17a-50a5d0336c23"; }];
+
+  # Hardware configuration
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware = {
+    cpu.intel.updateMicrocode =
+      lib.mkDefault config.hardware.enableRedistributableFirmware;
+    trackpoint = {
+      enable = true;
+      device = "TPPS/2 Elan TrackPoint";
+    };
+
+    opengl.enable = true;
+    nvidiaOptimus.disable = true;
+
+    bluetooth.enable = true;
+    pulseaudio = {
+      extraModules = [ pkgs.pulseaudio-modules-bt ];
+      package = pkgs.pulseaudioFull;
+    };
+  };
 }
