@@ -236,6 +236,7 @@
       devenv
       discord
       cloudflare-warp
+      postman
 
       # Language servers
       jdt-language-server
