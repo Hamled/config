@@ -7,5 +7,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
   };
 
-  outputs = inputs: { nixosConfigurations = { }; };
+  outputs = inputs:
+    let users = import ./users inputs;
+    in { nixosConfigurations = { }; };
 }
