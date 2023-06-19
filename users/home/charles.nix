@@ -74,11 +74,18 @@
           identityFile = "~/.ssh/aws_rsa4k";
         };
 
-        AdaWeb-stage = defaults // {
-          host = "ada-web-stage";
-          hostname = "44.196.159.33";
+        AdaWeb-Live = defaults // {
+          host = "ada-web-live";
+          hostname = "adadevelopersacademy.org";
           user = "bitnami";
-          identityFile = "~/.ssh/ada_stage_rsa2k";
+          identityFile = "~/.ssh/ada_live_ed25519";
+        };
+
+        AdaWeb-Old = defaults // {
+          host = "ada-web-old";
+          hostname = "old.adadevelopersacademy.org";
+          user = "bitnami";
+          identityFile = "~/.ssh/ada_old_ed25519";
         };
       };
     };
