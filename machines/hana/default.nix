@@ -1,10 +1,11 @@
-inputs@{ nixpkgs, ... }:
+inputs@{ nixos, ... }:
 users:
 let
   usersMods = builtins.map (config: config.nixos) (builtins.attrValues users);
   usersHome = builtins.mapAttrs (user: config: config.home) users;
-in nixpkgs.lib.nixosSystem {
+in nixos.lib.nixosSystem {
   system = "x86_64-linux";
   specialArgs = { inherit inputs usersHome; };
-  modules = [ ../core.nix ../core-home.nix ./configuration.nix ] ++ usersMods;
+  modules = [ ../digga.nix ./configuration.nix ../core.nix ../core-home.nix ]
+    ++ usersMods;
 }
