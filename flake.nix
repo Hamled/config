@@ -9,5 +9,9 @@
 
   outputs = inputs:
     let users = import ./users inputs;
-    in { nixosConfigurations = { }; };
+    in {
+      nixosConfigurations = {
+        hana = import ./machines/hana inputs { inherit (users) charles; };
+      };
+    };
 }
