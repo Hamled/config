@@ -1,4 +1,6 @@
 { config, lib, pkgs, ... }: {
+  imports = [ ./hardware.nix ];
+
   # Nix configuration
   system.stateVersion = "22.05";
 
