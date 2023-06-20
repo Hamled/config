@@ -8,6 +8,8 @@
 
     home.url = "github:nix-community/home-manager/release-23.05";
     home.inputs.nixpkgs.follows = "nixpkgs";
+
+    devenv.url = "github:cachix/devenv";
   };
 
   outputs = inputs:

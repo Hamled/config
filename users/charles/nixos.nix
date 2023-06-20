@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, inputs, ... }: {
   users.users.charles = {
     description = "Charles Ellis";
     isNormalUser = true;
@@ -16,4 +16,7 @@
   programs.ssh.startAgent = true;
 
   security.pam.services.swaylock = { };
+
+  nixpkgs.overlays =
+    [ (final: prev: { devenv = inputs.devenv.packages.x86_64-linux.devenv; }) ];
 }

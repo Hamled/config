@@ -1,4 +1,4 @@
-{ config, inputs, ... }: {
+{ config, inputs, usersHome, ... }: {
   imports = [
     inputs.home.nixosModules.home-manager
     {
@@ -14,6 +14,7 @@
         xdg.configFile."nix/registry.json".text =
           config.environment.etc."nix/registry.json".text;
       }];
+      home-manager.users = usersHome;
     }
   ];
 }

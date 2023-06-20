@@ -1,1 +1,4 @@
-inputs: { nixos = import ./nixos.nix; }
+inputs: {
+  nixos = import ./nixos.nix;
+  home = import ./home.nix;
+}
