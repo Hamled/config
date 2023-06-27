@@ -106,4 +106,22 @@
 (setq-hook! 'typescript-tsx-mode-hook
   +format-with-lsp nil)
 
+;; Extra LSP mode file watch ignore patterns
+(defvar lsp-file-watch-ignored-directories-global
+  '("[/\\\\]\\.devenv\\'")
+  "Extra LSP mode file watcher ignored directories to use globally.")
+(defvar lsp-file-watch-ignored-directories-local
+  nil
+  "Extra LSP mode file watcher ignored directories to use locally.")
+(put 'lsp-file-watch-ignored-directories-local 'safe-local-variable #'lsp--string-listp)
+
+(after! lsp-mode
+  (add-function :around (symbol-function 'lsp-file-watch-ignored-directories)
+    (lambda (orig)
+      (append
+        (funcall orig)
+        lsp-file-watch-ignored-directories-global
+        lsp-file-watch-ignored-directories-local))))
+
+
 ;;; config.el ends here
