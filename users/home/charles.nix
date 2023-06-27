@@ -237,6 +237,7 @@
       discord
       cloudflare-warp
       postman
+      cachix
 
       # Language servers
       jdt-language-server
