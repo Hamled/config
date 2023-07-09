@@ -174,6 +174,24 @@
       chooser_type = simple
       chooser_cmd = slurp -f %o ro
     '';
+
+    "direnv/direnvrc".text = ''
+      layout_poetry() {
+        if [[ ! -f ./pyproject.toml ]]; then
+          log_error 'No pyproject.toml found. Use `poetry new` or `poetry init` to create one.'
+          exit 2
+        fi
+
+        # Ensure project dependencies are present
+        poetry install -q
+
+        # Set virtual env from poetry
+        export VIRTUAL_ENV="$(poetry env info --path)"
+
+        # Run python layout
+        layout_python
+      }
+    '';
   };
 
   home.shellAliases.ssh = "TERM=xterm ssh";
