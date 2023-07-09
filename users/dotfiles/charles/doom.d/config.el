@@ -123,5 +123,4 @@
         lsp-file-watch-ignored-directories-global
         lsp-file-watch-ignored-directories-local))))
 
-
 ;;; config.el ends here
