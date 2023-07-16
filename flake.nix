@@ -2,11 +2,7 @@
   description = "NixOS configurations";
 
   inputs = {
-    flake-compat = {
-      url =
-        "github:nix-community/flake-compat/e7e5d481a0e15dcd459396e55327749989e04ce0";
-      flake = false;
-    };
+    flake-compat.url = "github:nix-community/flake-compat";
 
     nixos.url = "github:NixOS/nixpkgs/0874168639713f547c05947c76124f78441ea46c";
     latest.url =
