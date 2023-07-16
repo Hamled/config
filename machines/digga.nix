@@ -11,13 +11,6 @@ in {
     registry = nixRegistry // { self.flake = inputs.old-config; };
 
     package = pkgs.nixVersions.nix_2_9;
-
-    nixPath = [
-      "nixpkgs=${inputs.nixos}"
-      "nixpkgs-latest=${inputs.latest}"
-      "nixos-config=${../lib/compat/nixos}"
-      "home-manager=${inputs.home}"
-    ];
   };
 
   # Hack to match old config

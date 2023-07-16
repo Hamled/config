@@ -61,6 +61,13 @@
         lib.concatStringsSep " " (builtins.attrValues substituters)
       }
     '';
+
+    nixPath = [
+      "nixpkgs=${inputs.nixos}"
+      "nixpkgs-latest=${inputs.latest}"
+      "nixos-config=${inputs.self}"
+      "home-manager=${inputs.home}"
+    ];
   });
 
   hardware.enableRedistributableFirmware = true;
