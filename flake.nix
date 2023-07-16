@@ -12,8 +12,7 @@
       inputs.nixpkgs.follows = "nixos";
     };
 
-    devenv.url =
-      "github:cachix/devenv/6455f319fc90e0be2071327093c5458f9afc61bf";
+    devenv.url = "github:cachix/devenv";
 
     nix-doom-emacs.url =
       "github:nix-community/nix-doom-emacs/3c02175dd06714c15ddd2f73708de9b4dacc6aa9";
