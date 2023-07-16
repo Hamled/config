@@ -5,8 +5,7 @@
     flake-compat.url = "github:nix-community/flake-compat";
 
     nixos.url = "github:NixOS/nixpkgs/nixos-22.05";
-    latest.url =
-      "github:NixOS/nixpkgs/7067edc68c035e21780259ed2d26e1f164addaa2";
+    latest.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home = {
       url = "github:nix-community/home-manager/release-22.05";
