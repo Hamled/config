@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ lib, pkgs, inputs, ... }: {
   environment = {
     systemPackages = with pkgs; [
       binutils
@@ -31,7 +31,12 @@
     ];
   };
 
-  nix = {
+  nix = (let
+    substituters = {
+      "https://nix-community.cachix.org" =
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
+    };
+  in {
     systemFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
     useSandbox = true;
 
@@ -47,8 +52,14 @@
       keep-outputs = true
       keep-derivations = true
       fallback = true
+      extra-substituters = ${
+        lib.concatStringsSep " " (builtins.attrNames substituters)
+      }
+      extra-trusted-public-keys = ${
+        lib.concatStringsSep " " (builtins.attrValues substituters)
+      }
     '';
-  };
+  });
 
   hardware.enableRedistributableFirmware = true;
 }
