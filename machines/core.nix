@@ -68,6 +68,12 @@
       "nixos-config=${inputs.self}"
       "home-manager=${inputs.home}"
     ];
+
+    registry = {
+      nixpkgs.flake = inputs.nixos;
+      nixpkgs-latest.flake = inputs.latest;
+      home-manager.flake = inputs.home;
+    };
   });
 
   hardware.enableRedistributableFirmware = true;
