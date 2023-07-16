@@ -1,9 +1,5 @@
 { lib, pkgs, inputs, ... }:
 let
-  experimental-features = [ "flakes" "nix-command" ];
-  # This comes from FUP's mkFlake so we recreate it here
-  extraOptionsAddendum = "extra-experimental-features = nix-command flakes";
-
   # Used to recreate FUP's generateRegistryFromInputs option
   flakes = lib.filterAttrs (name: value:
     !(builtins.elem name [ "self" "old-config" ]) && value ? outputs) inputs;
@@ -13,14 +9,6 @@ in {
     # This option comes from FUP so we recreate the effect here
     #generateRegistryFromInputs = lib.mkDefault true;
     registry = nixRegistry // { self.flake = inputs.old-config; };
-
-    # missing merge semantics in this option force us to use extra-* for now
-    extraOptions = ''
-      extra-experimental-features = ${
-        lib.concatStringsSep " " experimental-features
-      }
-
-    '' + extraOptionsAddendum;
 
     package = pkgs.nixVersions.nix_2_9;
 

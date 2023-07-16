@@ -52,6 +52,8 @@
       keep-outputs = true
       keep-derivations = true
       fallback = true
+
+      extra-experimental-features = nix-command flakes
       extra-substituters = ${
         lib.concatStringsSep " " (builtins.attrNames substituters)
       }
