@@ -21,12 +21,6 @@
 
     nix-doom-emacs.url =
       "github:nix-community/nix-doom-emacs/3c02175dd06714c15ddd2f73708de9b4dacc6aa9";
-
-    old-config.url = "git+file:.?ref=old/main";
-    digga.url = "github:divnix/digga/0595ae70cdb5ccf1ab031199fe98551c4b378bd9";
-    digga.inputs.nixpkgs.follows = "nixos";
-    digga.inputs.nixlib.follows = "nixos";
-    digga.inputs.home-manager.follows = "home";
   };
 
   outputs = inputs:
