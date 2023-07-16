@@ -6,6 +6,5 @@ let
 in nixos.lib.nixosSystem {
   system = "x86_64-linux";
   specialArgs = { inherit inputs usersHome; };
-  modules = [ ../digga.nix ./configuration.nix ../core.nix ../core-home.nix ]
-    ++ usersMods;
+  modules = [ ./configuration.nix ../core.nix ../core-home.nix ] ++ usersMods;
 }
