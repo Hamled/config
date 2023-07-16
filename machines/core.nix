@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   environment = {
     systemPackages = with pkgs; [
       binutils
@@ -19,7 +19,18 @@
 
   users.mutableUsers = true;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      (final: prev: {
+        unstable = import inputs.latest {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+      })
+    ];
+  };
+
   nix = {
     systemFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
     useSandbox = true;
