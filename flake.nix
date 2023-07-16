@@ -8,9 +8,10 @@
     latest.url =
       "github:NixOS/nixpkgs/7067edc68c035e21780259ed2d26e1f164addaa2";
 
-    home.url =
-      "github:nix-community/home-manager/6639e3a837fc5deb6f99554072789724997bc8e5";
-    home.inputs.nixpkgs.follows = "nixos";
+    home = {
+      url = "github:nix-community/home-manager/release-22.05";
+      inputs.nixpkgs.follows = "nixos";
+    };
 
     devenv.url =
       "github:cachix/devenv/6455f319fc90e0be2071327093c5458f9afc61bf";
