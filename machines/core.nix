@@ -77,4 +77,6 @@
   });
 
   hardware.enableRedistributableFirmware = true;
+
+  system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;
 }
