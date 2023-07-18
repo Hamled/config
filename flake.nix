@@ -8,7 +8,7 @@
     latest.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixos";
     };
 
