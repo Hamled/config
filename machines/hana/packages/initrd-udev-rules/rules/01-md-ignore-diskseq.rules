@@ -1,0 +1,1 @@
+KERNEL=="md*", ENV{ID_IGNORE_DISKSEQ}="true"

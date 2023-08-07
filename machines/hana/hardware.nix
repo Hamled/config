@@ -12,6 +12,16 @@
   boot.initrd.luks.devices.sys.device =
     "/dev/disk/by-uuid/b5b67eb0-d597-4d5c-80fd-952be392ed0b";
 
+  # Custom udev rules for stage 1
+  boot.initrd.extraUdevRulesCommands = let
+    hana-initrd-udev-rules =
+      pkgs.callPackage ./packages/initrd-udev-rules/default.nix {
+        inherit pkgs;
+      };
+  in ''
+    cp -v ${hana-initrd-udev-rules}/lib/udev/rules.d/*.rules $out/
+  '';
+
   # File systems
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/7f502911-f8f9-49d8-b3eb-eb0e4b52842b";
