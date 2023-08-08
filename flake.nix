@@ -4,11 +4,11 @@
   inputs = {
     flake-compat.url = "github:nix-community/flake-compat";
 
-    nixos.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixos.url = "github:NixOS/nixpkgs/nixos-23.05";
     latest.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixos";
     };
 

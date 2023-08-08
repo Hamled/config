@@ -39,15 +39,17 @@
         "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
     };
   in {
-    systemFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-    useSandbox = true;
+    settings = {
+      system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      sandbox = true;
+      auto-optimise-store = true;
+
+      trusted-users = [ "root" "@wheel" ];
+      allowed-users = [ "@wheel" ];
+    };
 
     gc.automatic = true;
-    autoOptimiseStore = true;
     optimise.automatic = true;
-
-    trustedUsers = [ "root" "@wheel" ];
-    allowedUsers = [ "@wheel" ];
 
     extraOptions = ''
       min-free = ${toString (512 * 1024 * 1024)}

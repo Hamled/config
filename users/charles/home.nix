@@ -1,6 +1,9 @@
 { pkgs, lib, config, nix-doom-emacs, ... }: {
   imports = [ ../core.nix nix-doom-emacs.hmModule ];
 
+  home.username = "charles";
+  home.homeDirectory = "/home/charles";
+
   programs = let dotFiles = ../dotfiles/charles;
   in {
     doom-emacs = {
@@ -129,7 +132,7 @@
               "exec ${pkgs.grim}/bin/grim -o $(${pkgs.sway}/bin/swaymsg -t get_outputs | ${pkgs.jq}/bin/jq -r '.[] | select(.focused) | .name') ~/Screenshots/$(date +'%F_%T_grim.png')";
           };
 
-        bars = [{ fonts = fontsSetting; }];
+        #bars = [{ fonts = fontsSetting; }];
 
         input = { "*" = { xkb_options = "ctrl:nocaps"; }; };
 
