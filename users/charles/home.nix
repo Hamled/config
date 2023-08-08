@@ -197,6 +197,13 @@
     '';
   };
 
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
+    };
+  };
+
   home.shellAliases.ssh = "TERM=xterm ssh";
   home.sessionPath = [ "$HOME/.local/bin" ];
   home.file = {
@@ -259,6 +266,7 @@
       cloudflare-warp
       postman
       cachix
+      virt-manager
 
       # Language servers
       jdt-language-server
