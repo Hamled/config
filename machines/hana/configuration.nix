@@ -55,6 +55,7 @@
     fonts = with pkgs; [ nerdfonts ];
   };
 
+  virtualisation.libvirtd.enable = true;
   virtualisation.docker = let
     rootless = false;
 
