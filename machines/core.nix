@@ -67,8 +67,8 @@
     '';
 
     nixPath = [
-      "nixpkgs=${inputs.nixpkgs}"
-      "nixpkgs-latest=${inputs.nixpkgs-unstable}"
+      "nixpkgs=${pkgs.path}"
+      "nixpkgs-latest=${pkgs.unstable.path}"
       "nixos-config=${inputs.self}"
       "home-manager=${inputs.home}"
     ];
