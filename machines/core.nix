@@ -23,7 +23,7 @@
     config.allowUnfree = true;
     overlays = [
       (final: prev: {
-        unstable = import inputs.latest {
+        unstable = import inputs.nixpkgs-unstable {
           system = "x86_64-linux";
           config.allowUnfree = true;
         };
@@ -67,15 +67,15 @@
     '';
 
     nixPath = [
-      "nixpkgs=${inputs.nixos}"
-      "nixpkgs-latest=${inputs.latest}"
+      "nixpkgs=${pkgs.path}"
+      "nixpkgs-latest=${pkgs.unstable.path}"
       "nixos-config=${inputs.self}"
       "home-manager=${inputs.home}"
     ];
 
     registry = {
-      nixpkgs.flake = inputs.nixos;
-      nixpkgs-latest.flake = inputs.latest;
+      nixpkgs.flake = inputs.nixpkgs;
+      nixpkgs-latest.flake = inputs.nixpkgs-unstable;
       home-manager.flake = inputs.home;
     };
   });
