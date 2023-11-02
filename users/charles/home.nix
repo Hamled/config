@@ -267,6 +267,7 @@
       postman
       cachix
       virt-manager
+      sbcl
 
       # Language servers
       jdt-language-server
