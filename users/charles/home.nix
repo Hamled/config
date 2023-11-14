@@ -268,6 +268,7 @@
       cachix
       virt-manager
       sbcl
+      guile
 
       # Language servers
       jdt-language-server
