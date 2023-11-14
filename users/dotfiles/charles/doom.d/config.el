@@ -123,4 +123,6 @@
         lsp-file-watch-ignored-directories-global
         lsp-file-watch-ignored-directories-local))))
 
+(setq projectile-per-project-compilation-buffer t)
+
 ;;; config.el ends here
