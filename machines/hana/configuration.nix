@@ -39,6 +39,10 @@
       enable = true;
       package = pkgs.wireshark;
     };
+    gnupg.agent = {
+      enable = true;
+      pinentryFlavor = "gnome3";
+    };
   };
 
   xdg = {
