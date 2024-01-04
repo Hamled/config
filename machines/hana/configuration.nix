@@ -31,6 +31,10 @@
       pulse.enable = true;
     };
     blueman.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
   };
 
   programs = {
