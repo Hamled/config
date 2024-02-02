@@ -179,6 +179,8 @@
     '';
 
     "direnv/direnvrc".text = ''
+      # Skip direnv if DIRENV_DISABLE is set
+      ''${DIRENV_DISABLE:+exit}
       layout_poetry() {
         if [[ ! -f ./pyproject.toml ]]; then
           log_error 'No pyproject.toml found. Use `poetry new` or `poetry init` to create one.'
