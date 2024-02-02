@@ -28,6 +28,12 @@
           config.allowUnfree = true;
         };
       })
+      (final: prev: {
+        nixos-23_11 = import inputs.nixos-23_11 {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+      })
     ];
   };
 
