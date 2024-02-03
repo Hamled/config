@@ -287,7 +287,7 @@
       nodePackages.eslint
       nodePackages.prettier
 
-      nixfmt
+      alejandra
       dockfmt
       black
       #rustfmt
