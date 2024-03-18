@@ -10,8 +10,10 @@
 
   # Keyboard / console
   services.xserver = {
-    layout = "us";
-    xkbOptions = "ctrl:nocaps";
+    xkb = {
+      layout = "us";
+      options = "ctrl:nocaps";
+    };
 
     videoDrivers = [ "modesetting" ];
   };
@@ -33,7 +35,7 @@
     blueman.enable = true;
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
     };
   };
 
@@ -60,7 +62,7 @@
   fonts = {
     fontconfig.enable = true;
 
-    fonts = with pkgs; [ nerdfonts ];
+    packages = with pkgs; [ nerdfonts ];
   };
 
   virtualisation.libvirtd.enable = true;
