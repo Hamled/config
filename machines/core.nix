@@ -78,14 +78,12 @@
 
     nixPath = [
       "nixpkgs=${pkgs.path}"
-      "nixpkgs-latest=${pkgs.unstable.path}"
       "nixos-config=${inputs.self}"
       "home-manager=${inputs.home}"
     ];
 
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
-      nixpkgs-latest.flake = inputs.nixpkgs-unstable;
       home-manager.flake = inputs.home;
     };
   });

@@ -26,10 +26,5 @@
 
   nixpkgs.overlays = [
     (final: prev: { devenv = inputs.devenv.packages.x86_64-linux.devenv; })
-    (final: prev: {
-      inherit (pkgs.unstable)
-        cachix rustup discord direnv slack bitwarden firefox;
-    })
-    (final: prev: { inherit (pkgs.nixos-23_11) zoom-us; })
   ];
 }
