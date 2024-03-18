@@ -13,8 +13,7 @@
 
     devenv.url = "github:cachix/devenv";
 
-    nix-doom-emacs.url =
-      "github:nix-community/nix-doom-emacs/3c02175dd06714c15ddd2f73708de9b4dacc6aa9";
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
   outputs = inputs:
