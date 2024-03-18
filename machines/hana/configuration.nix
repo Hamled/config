@@ -47,7 +47,7 @@
     };
     gnupg.agent = {
       enable = true;
-      pinentryFlavor = "gnome3";
+      pinentryPackage = pkgs.pinentry-gnome3;
     };
   };
 
