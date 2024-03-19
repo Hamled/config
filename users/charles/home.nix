@@ -8,6 +8,7 @@
   in {
     doom-emacs = {
       enable = true;
+      emacsPackage = pkgs.emacs28-gtk3;
       doomPrivateDir = "${dotFiles}/doom.d";
       extraConfig = ''
         (after! lsp-java
