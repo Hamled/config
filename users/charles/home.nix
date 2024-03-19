@@ -182,6 +182,14 @@
     "direnv/direnvrc".text = ''
       # Skip direnv if DIRENV_DISABLE is set
       ''${DIRENV_DISABLE:+exit}
+
+      use_flake_unfree() {
+        watch_file flake.nix
+        watch_file flake.lock
+        mkdir -p "$(direnv_layout_dir)"
+        eval "$(NIXPKGS_ALLOW_UNFREE=1 nix print-dev-env --impure --profile "$(direnv_layout_dir)/flake-profile" "$@")"
+      }
+
       layout_poetry() {
         if [[ ! -f ./pyproject.toml ]]; then
           log_error 'No pyproject.toml found. Use `poetry new` or `poetry init` to create one.'
