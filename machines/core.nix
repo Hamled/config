@@ -49,6 +49,7 @@
         "nixpkgs-terraform.cachix.org-1:8Sit092rIdAVENA3ZVeH9hzSiqI/jng6JiCrQ1Dmusw=";
     };
   in {
+    package = pkgs.nixVersions.unstable;
     settings = {
       system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
       sandbox = true;
