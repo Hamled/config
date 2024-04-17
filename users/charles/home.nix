@@ -108,6 +108,41 @@
     };
 
     firefox.enable = true;
+
+    direnv = {
+      config.global = {
+        strict_env = true;
+        hide_env_diff = true;
+        warn_timeout = "5m";
+      };
+      stdlib = ''
+        # Skip direnv if DIRENV_DISABLE is set
+        ''${DIRENV_DISABLE:+exit}
+
+        use_flake_unfree() {
+          watch_file flake.nix
+          watch_file flake.lock
+          mkdir -p "$(direnv_layout_dir)"
+          eval "$(NIXPKGS_ALLOW_UNFREE=1 nix print-dev-env --impure --profile "$(direnv_layout_dir)/flake-profile" "$@")"
+        }
+
+        layout_poetry() {
+          if [[ ! -f ./pyproject.toml ]]; then
+            log_error 'No pyproject.toml found. Use `poetry new` or `poetry init` to create one.'
+            exit 2
+          fi
+
+          # Ensure project dependencies are present
+          poetry install -q
+
+          # Set virtual env from poetry
+          export VIRTUAL_ENV="$(poetry env info --path)"
+
+          # Run python layout
+          layout_python
+        }
+     '';
+    };
   };
 
   wayland = {
@@ -177,34 +212,6 @@
     "xdg-desktop-portal-wlr/config".text = ''
       chooser_type = simple
       chooser_cmd = slurp -f %o ro
-    '';
-
-    "direnv/direnvrc".text = ''
-      # Skip direnv if DIRENV_DISABLE is set
-      ''${DIRENV_DISABLE:+exit}
-
-      use_flake_unfree() {
-        watch_file flake.nix
-        watch_file flake.lock
-        mkdir -p "$(direnv_layout_dir)"
-        eval "$(NIXPKGS_ALLOW_UNFREE=1 nix print-dev-env --impure --profile "$(direnv_layout_dir)/flake-profile" "$@")"
-      }
-
-      layout_poetry() {
-        if [[ ! -f ./pyproject.toml ]]; then
-          log_error 'No pyproject.toml found. Use `poetry new` or `poetry init` to create one.'
-          exit 2
-        fi
-
-        # Ensure project dependencies are present
-        poetry install -q
-
-        # Set virtual env from poetry
-        export VIRTUAL_ENV="$(poetry env info --path)"
-
-        # Run python layout
-        layout_python
-      }
     '';
   };
 
