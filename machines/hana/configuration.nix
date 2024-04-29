@@ -37,6 +37,7 @@
       enable = true;
       nssmdns4 = true;
     };
+    gnome.gnome-keyring.enable = true;
   };
 
   programs = {
