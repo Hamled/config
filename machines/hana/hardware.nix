@@ -46,7 +46,7 @@
       device = "TPPS/2 Elan TrackPoint";
     };
 
-    opengl.enable = true;
+    graphics.enable = true;
     nvidiaOptimus.disable = true;
 
     bluetooth.enable = true;
