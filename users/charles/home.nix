@@ -275,7 +275,7 @@
       unzip
       jetbrains.idea-ultimate
       nodejs
-      dbeaver
+      dbeaver-bin
       whois
       jq
       xh
