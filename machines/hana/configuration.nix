@@ -90,7 +90,7 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     qt5.qtwayland
     pulseaudioFull
   ];
