@@ -76,6 +76,7 @@
         AWS = defaults // {
           host = "*.amazonaws.com";
           identityFile = "~/.ssh/aws_rsa4k";
+          forwardAgent = true;
         };
 
         AdaWeb-Live = defaults // {
