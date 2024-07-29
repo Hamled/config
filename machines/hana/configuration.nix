@@ -61,6 +61,10 @@
       config.common.default = "*";
     };
   };
+  # Create a symlink in /usr/libexec because Zoom expects it
+  systemd.tmpfiles.rules = [
+    "L+ /usr/libexec/xdg-desktop-portal - - - - ${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal"
+  ];
 
   fonts = {
     fontconfig.enable = true;
