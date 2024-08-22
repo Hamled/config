@@ -69,7 +69,7 @@
   fonts = {
     fontconfig.enable = true;
 
-    packages = with pkgs; [ nerdfonts ];
+    packages = with pkgs; [ nerdfonts corefonts vistafonts noto-fonts ];
   };
 
   virtualisation.libvirtd.enable = true;
