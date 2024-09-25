@@ -37,7 +37,11 @@
       enable = true;
       nssmdns4 = true;
     };
-    gnome.gnome-keyring.enable = true;
+    gnome = {
+      gnome-keyring.enable = true;
+      at-spi2-core.enable = true;
+    };
+    speechd.enable = true;
   };
 
   programs = {
@@ -97,6 +101,7 @@
     adwaita-icon-theme
     qt5.qtwayland
     pulseaudioFull
+    orca
   ];
 
   security = {
