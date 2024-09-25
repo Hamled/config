@@ -256,8 +256,20 @@
       "${pkgs.lombok}/share/java/lombok.jar";
   };
 
-  home.packages = with pkgs;
-    let jdk8-low = jdk8.overrideAttrs (oldAttrs: { meta.priority = 10; });
+  home.packages = with pkgs; let
+    jdk8-low = jdk8.overrideAttrs (oldAttrs: { meta.priority = 10; });
+    zoom-us-fix = zoom-us.overrideAttrs (attrs: {
+      nativeBuildInputs = (attrs.nativeBuildInputs or []) ++ [pkgs.bbe];
+      postFixup =
+        ''
+          cp $out/opt/zoom/zoom .
+          bbe -e 's/\0manjaro\0/\0nixos\0\0\0/' < zoom > $out/opt/zoom/zoom
+        ''
+        + (attrs.postFixup or "")
+        + ''
+          sed -i 's|Exec=|Exec=env XDG_CURRENT_DESKTOP="gnome" |' $out/share/applications/Zoom.desktop
+        '';
+    });
     in [
       wl-clipboard
       swaylock
@@ -268,7 +280,7 @@
       bitwarden
       pavucontrol
       grim
-      zoom-us
+      zoom-us-fix
       slurp
       openvpn
       google-chrome
