@@ -73,7 +73,16 @@
   fonts = {
     fontconfig.enable = true;
 
-    packages = with pkgs; [ nerdfonts corefonts vistafonts noto-fonts ];
+    packages = with pkgs; [
+      nerd-fonts.iosevka
+      nerd-fonts.fira-mono
+      nerd-fonts.fira-code
+      nerd-fonts.ubuntu-sans
+      nerd-fonts.ubuntu-mono
+      corefonts
+      vistafonts
+      noto-fonts
+    ];
   };
 
   virtualisation.libvirtd.enable = true;
