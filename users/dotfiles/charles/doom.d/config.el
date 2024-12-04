@@ -114,11 +114,11 @@
 
 (after! lsp-mode
   (add-function :around (symbol-function 'lsp-file-watch-ignored-directories)
-    (lambda (orig)
-      (append
-        (funcall orig)
-        lsp-file-watch-ignored-directories-global
-        lsp-file-watch-ignored-directories-local))))
+                (lambda (orig)
+                  (append
+                   (funcall orig)
+                   lsp-file-watch-ignored-directories-global
+                   lsp-file-watch-ignored-directories-local))))
 
 (setq projectile-per-project-compilation-buffer t)
 
