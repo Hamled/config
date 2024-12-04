@@ -123,4 +123,6 @@
 (setq projectile-per-project-compilation-buffer t)
 
 (set-formatter! 'alejandra "alejandra --quiet" :modes '(nix-mode))
+
+(load "default.el")
 ;;; config.el ends here
