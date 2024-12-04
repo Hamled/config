@@ -6,10 +6,9 @@
 
   programs = let dotFiles = ../dotfiles/charles;
   in {
-    doom-emacs = {
+    emacs = {
       enable = true;
-      emacsPackage = pkgs.emacs28-gtk3;
-      doomPrivateDir = "${dotFiles}/doom.d";
+      extraPackages = epkgs: [ epkgs.vterm ];
       extraConfig = ''
         (after! lsp-java
           (setq
