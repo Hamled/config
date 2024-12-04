@@ -3,6 +3,7 @@
     systemPackages = with pkgs; [
       binutils
       coreutils
+      moreutils
       curl
       git
       gptfdisk
