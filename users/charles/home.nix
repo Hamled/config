@@ -1,5 +1,5 @@
-{ pkgs, lib, config, nix-doom-emacs, ... }: {
-  imports = [ ../core.nix nix-doom-emacs.hmModule ];
+{ pkgs, lib, config, ... }: {
+  imports = [ ../core.nix ];
 
   home.username = "charles";
   home.homeDirectory = "/home/charles";
