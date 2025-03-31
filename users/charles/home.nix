@@ -80,12 +80,22 @@
             identityFile = "~/.ssh/github_ed25519";
           };
 
-        GitLab =
+        GitLabSI =
           defaults
           // {
-            host = "gitlab.com";
+            host = "gitlab_si";
+            hostname = "gitlab.com";
             user = "git";
-            identityFile = "~/.ssh/gitlab_ed25519";
+            identityFile = "~/.ssh/gitlab_si_ed25519";
+          };
+
+        GitLabCNC =
+          defaults
+          // {
+            host = "gitlab_cnc";
+            hostname = "gitlab.com";
+            user = "git";
+            identityFile = "~/.ssh/gitlab_cnc_ed25519";
           };
 
         AWS =
