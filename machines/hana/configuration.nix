@@ -1,5 +1,10 @@
-{ config, lib, pkgs, ... }: {
-  imports = [ ./hardware.nix ];
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [./hardware.nix];
 
   # Nix configuration
   system.stateVersion = "22.05";
@@ -15,7 +20,7 @@
       options = "ctrl:nocaps";
     };
 
-    videoDrivers = [ "modesetting" ];
+    videoDrivers = ["modesetting"];
   };
 
   console = {
@@ -62,7 +67,7 @@
     portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+      extraPortals = with pkgs; [xdg-desktop-portal-gtk];
       config.common.default = "*";
     };
   };
@@ -103,7 +108,13 @@
         };
       };
     };
-  in { } // (if rootless then { rootless = docker-config; } else docker-config);
+  in
+    {}
+    // (
+      if rootless
+      then {rootless = docker-config;}
+      else docker-config
+    );
 
   environment.systemPackages = with pkgs; [
     vim
@@ -122,14 +133,14 @@
   # Allow delegation in user services
   systemd.packages = [
     (pkgs.runCommandNoCC "delegate.conf" {
-      preferLocalBuild = true;
-      allowSubstitutes = false;
-    } ''
-      dropInDir=$out/etc/systemd/system/user@.service.d
-      mkdir -p $dropInDir
-      echo "[Service]" >> $dropInDir/delegate.conf
-      echo "Delegate=yes" >> $dropInDir/delegate.conf
-    '')
+        preferLocalBuild = true;
+        allowSubstitutes = false;
+      } ''
+        dropInDir=$out/etc/systemd/system/user@.service.d
+        mkdir -p $dropInDir
+        echo "[Service]" >> $dropInDir/delegate.conf
+        echo "Delegate=yes" >> $dropInDir/delegate.conf
+      '')
   ];
 
   # Networking

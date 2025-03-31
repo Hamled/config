@@ -1,4 +1,9 @@
-{ lib, pkgs, inputs, ... }: {
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   environment = {
     systemPackages = with pkgs; [
       binutils
@@ -38,26 +43,22 @@
     ];
   };
 
-  nix = (let
+  nix = let
     substituters = {
-      "https://nix-community.cachix.org" =
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
-      "https://devenv.cachix.org" =
-        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-      "https://nixpkgs-python.cachix.org" =
-        "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU=";
-      "https://nixpkgs-terraform.cachix.org" =
-        "nixpkgs-terraform.cachix.org-1:8Sit092rIdAVENA3ZVeH9hzSiqI/jng6JiCrQ1Dmusw=";
+      "https://nix-community.cachix.org" = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
+      "https://devenv.cachix.org" = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
+      "https://nixpkgs-python.cachix.org" = "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU=";
+      "https://nixpkgs-terraform.cachix.org" = "nixpkgs-terraform.cachix.org-1:8Sit092rIdAVENA3ZVeH9hzSiqI/jng6JiCrQ1Dmusw=";
     };
   in {
     package = pkgs.nixVersions.latest;
     settings = {
-      system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      system-features = ["nixos-test" "benchmark" "big-parallel" "kvm"];
       sandbox = true;
       auto-optimise-store = true;
 
-      trusted-users = [ "root" "@wheel" ];
-      allowed-users = [ "@wheel" ];
+      trusted-users = ["root" "@wheel"];
+      allowed-users = ["@wheel"];
     };
 
     gc.automatic = true;
@@ -88,7 +89,7 @@
       nixpkgs.flake = inputs.nixpkgs;
       home-manager.flake = inputs.home;
     };
-  });
+  };
 
   hardware.enableRedistributableFirmware = true;
 

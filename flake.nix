@@ -14,11 +14,11 @@
     devenv.url = "github:cachix/devenv/v1.4.1";
   };
 
-  outputs = inputs:
-    let users = import ./users inputs;
-    in {
-      nixosConfigurations = {
-        hana = import ./machines/hana inputs { inherit (users) charles; };
-      };
+  outputs = inputs: let
+    users = import ./users inputs;
+  in {
+    nixosConfigurations = {
+      hana = import ./machines/hana inputs {inherit (users) charles;};
     };
+  };
 }

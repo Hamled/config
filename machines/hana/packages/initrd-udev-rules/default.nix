@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.stdenv.mkDerivation {
   name = "hana-initrd-udev-rules";
   src = ./rules/.;

@@ -1,1 +1,1 @@
-inputs: { charles = import ./charles inputs; }
+inputs: {charles = import ./charles inputs;}

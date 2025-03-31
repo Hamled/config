@@ -1,14 +1,20 @@
-{ pkgs, lib, config, ... }: {
-  imports = [ ../core.nix ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [../core.nix];
 
   home.username = "charles";
   home.homeDirectory = "/home/charles";
 
-  programs = let dotFiles = ../dotfiles/charles;
+  programs = let
+    dotFiles = ../dotfiles/charles;
   in {
     emacs = {
       enable = true;
-      extraPackages = epkgs: [ epkgs.vterm ];
+      extraPackages = epkgs: [epkgs.vterm];
       extraConfig = ''
         (after! lsp-java
           (setq
@@ -52,7 +58,7 @@
         }
       ];
 
-      ignores = [ ".dir-locals.el" ".projectile" ];
+      ignores = [".dir-locals.el" ".projectile"];
 
       extraConfig.init.defaultBranch = "main";
     };
@@ -66,43 +72,54 @@
           identitiesOnly = true;
         };
       in {
-        GitHub = defaults // {
-          host = "github.com";
-          user = "git";
-          identityFile = "~/.ssh/github_ed25519";
-        };
+        GitHub =
+          defaults
+          // {
+            host = "github.com";
+            user = "git";
+            identityFile = "~/.ssh/github_ed25519";
+          };
 
-        GitLab = defaults // {
-          host = "gitlab.com";
-          user = "git";
-          identityFile = "~/.ssh/gitlab_ed25519";
-        };
+        GitLab =
+          defaults
+          // {
+            host = "gitlab.com";
+            user = "git";
+            identityFile = "~/.ssh/gitlab_ed25519";
+          };
 
-        AWS = defaults // {
-          host = "*.amazonaws.com";
-          identityFile = "~/.ssh/aws_rsa4k";
-          forwardAgent = true;
-        };
+        AWS =
+          defaults
+          // {
+            host = "*.amazonaws.com";
+            identityFile = "~/.ssh/aws_rsa4k";
+            forwardAgent = true;
+          };
 
-        AdaWeb-Live = defaults // {
-          host = "ada-web-live";
-          hostname = "adadevelopersacademy.org";
-          user = "bitnami";
-          identityFile = "~/.ssh/ada_live_ed25519";
-        };
+        AdaWeb-Live =
+          defaults
+          // {
+            host = "ada-web-live";
+            hostname = "adadevelopersacademy.org";
+            user = "bitnami";
+            identityFile = "~/.ssh/ada_live_ed25519";
+          };
 
-        AdaWeb-Old = defaults // {
-          host = "ada-web-old";
-          hostname = "old.adadevelopersacademy.org";
-          user = "bitnami";
-          identityFile = "~/.ssh/ada_old_ed25519";
-        };
+        AdaWeb-Old =
+          defaults
+          // {
+            host = "ada-web-old";
+            hostname = "old.adadevelopersacademy.org";
+            user = "bitnami";
+            identityFile = "~/.ssh/ada_old_ed25519";
+          };
       };
     };
 
     alacritty = {
       enable = true;
-      settings.font = let fontFamily = "DejaVu Sans Mono";
+      settings.font = let
+        fontFamily = "DejaVu Sans Mono";
       in {
         size = 16.0;
 
@@ -147,18 +164,18 @@
           # Run python layout
           layout_python
         }
-     '';
+      '';
     };
   };
 
   wayland = {
     windowManager.sway = {
       enable = true;
-      extraOptions = [ "--unsupported-gpu" ];
+      extraOptions = ["--unsupported-gpu"];
 
       config = let
         fontsSetting = {
-          names = [ "DejaVu Sans Mono" ];
+          names = ["DejaVu Sans Mono"];
           size = 16.0;
         };
       in {
@@ -166,19 +183,19 @@
         fonts = fontsSetting;
         terminal = "alacritty";
 
-        keybindings =
-          let modifier = config.wayland.windowManager.sway.config.modifier;
-          in lib.mkOptionDefault {
+        keybindings = let
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in
+          lib.mkOptionDefault {
             "${modifier}+BackSpace" = "exec ${pkgs.swaylock}/bin/swaylock";
-            "${modifier}+Print" =
-              "exec ${pkgs.grim}/bin/grim -o $(${pkgs.sway}/bin/swaymsg -t get_outputs | ${pkgs.jq}/bin/jq -r '.[] | select(.focused) | .name') ~/Screenshots/$(date +'%F_%T_grim.png')";
+            "${modifier}+Print" = "exec ${pkgs.grim}/bin/grim -o $(${pkgs.sway}/bin/swaymsg -t get_outputs | ${pkgs.jq}/bin/jq -r '.[] | select(.focused) | .name') ~/Screenshots/$(date +'%F_%T_grim.png')";
           };
 
         #bars = [{ fonts = fontsSetting; }];
 
-        input = { "*" = { xkb_options = "ctrl:nocaps"; }; };
+        input = {"*" = {xkb_options = "ctrl:nocaps";};};
 
-        seat = { seat0 = { xcursor_theme = "Adwaita"; }; };
+        seat = {seat0 = {xcursor_theme = "Adwaita";};};
       };
 
       extraSessionCommands = ''
@@ -208,7 +225,7 @@
 
   fonts.fontconfig.enable = true;
 
-  services = { blueman-applet.enable = true; };
+  services = {blueman-applet.enable = true;};
 
   xdg.configFile = {
     "swaylock/config".text = ''
@@ -223,13 +240,13 @@
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
     };
   };
 
   home.shellAliases.ssh = "TERM=xterm ssh";
-  home.sessionPath = [ "$HOME/.local/bin" ];
+  home.sessionPath = ["$HOME/.local/bin"];
   home.file = {
     ".local/bin/firefox-personal" = {
       executable = true;
@@ -253,16 +270,15 @@
       org.gradle.java.installations.auto-download=false
       org.gradle.java.installations.paths=${
         lib.concatMapStringsSep "," (p: "${p}/lib/openjdk")
-        (with pkgs; [ jdk8 jdk11 jdk17 jdk ])
+        (with pkgs; [jdk8 jdk11 jdk17 jdk])
       }
     '';
 
-    ".local/share/lombok.system.jar".source =
-      "${pkgs.lombok}/share/java/lombok.jar";
+    ".local/share/lombok.system.jar".source = "${pkgs.lombok}/share/java/lombok.jar";
   };
 
   home.packages = with pkgs; let
-    jdk8-low = jdk8.overrideAttrs (oldAttrs: { meta.priority = 10; });
+    jdk8-low = jdk8.overrideAttrs (oldAttrs: {meta.priority = 10;});
     zoom-us-fix = zoom-us.overrideAttrs (attrs: {
       nativeBuildInputs = (attrs.nativeBuildInputs or []) ++ [pkgs.bbe];
       postFixup =
@@ -275,54 +291,54 @@
           sed -i 's|Exec=|Exec=env XDG_CURRENT_DESKTOP="gnome" |' $out/share/applications/Zoom.desktop
         '';
     });
-    in [
-      wl-clipboard
-      swaylock
-      jdk
-      jdk8-low
-      ripgrep
-      slack
-      bitwarden
-      pavucontrol
-      grim
-      zoom-us-fix
-      slurp
-      google-chrome
-      unzip
-      jetbrains.idea-ultimate
-      nodejs
-      dbeaver-bin
-      whois
-      jq
-      xh
-      rustup
-      devenv
-      discord
-      cloudflare-warp
-      postman
-      cachix
-      virt-manager
-      sbcl
-      guile
-      pandoc
+  in [
+    wl-clipboard
+    swaylock
+    jdk
+    jdk8-low
+    ripgrep
+    slack
+    bitwarden
+    pavucontrol
+    grim
+    zoom-us-fix
+    slurp
+    google-chrome
+    unzip
+    jetbrains.idea-ultimate
+    nodejs
+    dbeaver-bin
+    whois
+    jq
+    xh
+    rustup
+    devenv
+    discord
+    cloudflare-warp
+    postman
+    cachix
+    virt-manager
+    sbcl
+    guile
+    pandoc
 
-      # Language servers
-      jdt-language-server
-      yaml-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodePackages.dockerfile-language-server-nodejs
-      nodePackages.bash-language-server
-      #rust-analyzer
-      shellcheck
+    # Language servers
+    jdt-language-server
+    yaml-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.dockerfile-language-server-nodejs
+    nodePackages.bash-language-server
+    #rust-analyzer
+    shellcheck
 
-      nodePackages.eslint
-      nodePackages.prettier
+    nodePackages.eslint
+    nodePackages.prettier
 
-      alejandra
-      dockfmt
-      black
-      #rustfmt
-    ];
+    alejandra
+    dockfmt
+    black
+    #rustfmt
+  ];
 }

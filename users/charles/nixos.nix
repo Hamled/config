@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   users.users.charles = {
     description = "Charles Ellis";
     isNormalUser = true;
@@ -19,14 +25,14 @@
     ];
   };
 
-  environment.variables = { EDITOR = "vim"; };
+  environment.variables = {EDITOR = "vim";};
 
   programs.ssh.startAgent = true;
   programs.openvpn3.enable = true;
 
-  security.pam.services.swaylock = { };
+  security.pam.services.swaylock = {};
 
   nixpkgs.overlays = [
-    (final: prev: { devenv = inputs.devenv.packages.x86_64-linux.devenv; })
+    (final: prev: {devenv = inputs.devenv.packages.x86_64-linux.devenv;})
   ];
 }
