@@ -25,6 +25,7 @@
 
   # Programs & Services
   services = {
+    resolved.enable = true;
     openssh.enable = true;
     pipewire = {
       enable = true;
