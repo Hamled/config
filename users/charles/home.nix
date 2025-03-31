@@ -41,10 +41,16 @@
       userName = "Charles Ellis";
       userEmail = "hamled@hamled.dev";
 
-      includes = [{
-        condition = "gitdir:~/projects/si/";
-        path = "~/projects/si/.gitconfig";
-      }];
+      includes = [
+        {
+          condition = "gitdir:~/projects/si/";
+          path = "~/projects/si/.gitconfig";
+        }
+        {
+          condition = "gitdir:~/projects/cmdnctrl/";
+          path = "~/projects/cmdnctrl/.gitconfig";
+        }
+      ];
 
       ignores = [ ".dir-locals.el" ".projectile" ];
 
