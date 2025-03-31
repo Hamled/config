@@ -281,7 +281,6 @@
       grim
       zoom-us-fix
       slurp
-      openvpn
       google-chrome
       unzip
       jetbrains.idea-ultimate

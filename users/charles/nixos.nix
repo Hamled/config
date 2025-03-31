@@ -11,6 +11,7 @@
       "docker"
       "wireshark"
       "libvirtd"
+      "openvpn"
     ];
 
     openssh.authorizedKeys.keys = [
@@ -21,6 +22,7 @@
   environment.variables = { EDITOR = "vim"; };
 
   programs.ssh.startAgent = true;
+  programs.openvpn3.enable = true;
 
   security.pam.services.swaylock = { };
 
