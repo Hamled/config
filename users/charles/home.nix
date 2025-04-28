@@ -49,10 +49,6 @@
 
       includes = [
         {
-          condition = "gitdir:~/projects/si/";
-          path = "~/projects/si/.gitconfig";
-        }
-        {
           condition = "gitdir:~/projects/cmdnctrl/";
           path = "~/projects/cmdnctrl/.gitconfig";
         }
@@ -78,15 +74,6 @@
             host = "github.com";
             user = "git";
             identityFile = "~/.ssh/github_ed25519";
-          };
-
-        GitLabSI =
-          defaults
-          // {
-            host = "gitlab_si";
-            hostname = "gitlab.com";
-            user = "git";
-            identityFile = "~/.ssh/gitlab_si_ed25519";
           };
 
         GitLabCNC =
