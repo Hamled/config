@@ -48,6 +48,10 @@
       at-spi2-core.enable = true;
     };
     speechd.enable = true;
+    pulseaudio = {
+      extraModules = [pkgs.pulseaudio-modules-bt];
+      package = pkgs.pulseaudioFull;
+    };
   };
 
   programs = {
