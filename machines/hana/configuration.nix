@@ -48,6 +48,10 @@
       at-spi2-core.enable = true;
     };
     speechd.enable = true;
+    pulseaudio = {
+      extraModules = [pkgs.pulseaudio-modules-bt];
+      package = pkgs.pulseaudioFull;
+    };
   };
 
   programs = {
@@ -80,6 +84,7 @@
     fontconfig.enable = true;
 
     packages = with pkgs; [
+      nerd-fonts.symbols-only
       nerd-fonts.iosevka
       nerd-fonts.fira-mono
       nerd-fonts.fira-code
