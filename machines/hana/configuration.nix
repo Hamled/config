@@ -84,6 +84,7 @@
     fontconfig.enable = true;
 
     packages = with pkgs; [
+      nerd-fonts.symbols-only
       nerd-fonts.iosevka
       nerd-fonts.fira-mono
       nerd-fonts.fira-code
