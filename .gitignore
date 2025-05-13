@@ -5,5 +5,8 @@ result
 .devenv*
 devenv.local.nix
 
-# Direnv
+# direnv
 .direnv
+
+# pre-commit
+.pre-commit-config.yaml

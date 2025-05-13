@@ -31,8 +31,4 @@
   programs.openvpn3.enable = true;
 
   security.pam.services.swaylock = {};
-
-  nixpkgs.overlays = [
-    (final: prev: {devenv = inputs.devenv.packages.x86_64-linux.devenv;})
-  ];
 }

@@ -1,1 +1,3 @@
-{pkgs, ...}: {languages.nix.enable = true;}
+{pkgs, ...}: {
+  languages.nix.enable = true;
+}
