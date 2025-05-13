@@ -1,9 +1,2 @@
 tmp/
 result
-
-# Devenv
-.devenv*
-devenv.local.nix
-
-# Direnv
-.direnv
