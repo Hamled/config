@@ -294,6 +294,9 @@
     guile
     pandoc
 
+    awscli2
+    kubectl
+
     # Language servers
     yaml-language-server
     nodePackages.vscode-langservers-extracted
