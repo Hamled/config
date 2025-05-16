@@ -265,17 +265,12 @@
 
     ".gradle/gradle.properties".text = ''
       org.gradle.java.installations.auto-download=false
-      org.gradle.java.installations.paths=${
-        lib.concatMapStringsSep "," (p: "${p}/lib/openjdk")
-        (with pkgs; [jdk8 jdk11 jdk17 jdk])
-      }
     '';
 
     ".local/share/lombok.system.jar".source = "${pkgs.lombok}/share/java/lombok.jar";
   };
 
   home.packages = with pkgs; let
-    jdk8-low = jdk8.overrideAttrs (oldAttrs: {meta.priority = 10;});
     zoom-us-fix = zoom-us.overrideAttrs (attrs: {
       nativeBuildInputs = (attrs.nativeBuildInputs or []) ++ [pkgs.bbe];
       postFixup =
@@ -291,8 +286,6 @@
   in [
     wl-clipboard
     swaylock
-    jdk
-    jdk8-low
     ripgrep
     slack
     bitwarden
