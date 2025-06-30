@@ -45,6 +45,7 @@
     };
     gnome = {
       gnome-keyring.enable = true;
+      gcr-ssh-agent.enable = false;
       at-spi2-core.enable = true;
     };
     speechd.enable = true;
