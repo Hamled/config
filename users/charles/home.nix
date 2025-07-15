@@ -151,6 +151,7 @@
         mkhl.direnv
         dracula-theme.theme-dracula
         vscodevim.vim
+        gitlab.gitlab-workflow
       ];
     };
   };
