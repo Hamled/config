@@ -145,6 +145,14 @@
         }
       '';
     };
+    vscode = {
+      enable = true;
+      profiles.default.extensions = with pkgs.vscode-extensions; [
+        mkhl.direnv
+        dracula-theme.theme-dracula
+        vscodevim.vim
+      ];
+    };
   };
 
   wayland = {
