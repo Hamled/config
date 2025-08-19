@@ -95,6 +95,7 @@
    [(:sha256 "e68185c8c0f67873dcd98916621870266a71584dfb0a2861d87d7077ebc39837"
      :allowed t)]))
 
+(add-hook 'java-mode-local-vars-hook #'lsp! 'append)
 
 
 ;; Use prettier to format typescript

@@ -15,24 +15,6 @@
     emacs = {
       enable = true;
       extraPackages = epkgs: [epkgs.vterm];
-      extraConfig = ''
-        (after! lsp-java
-          (setq
-            lsp-java-java-path "${pkgs.jdk}/lib/openjdk/bin/java"
-
-            lsp-java-configuration-runtimes '[
-              (:name "JavaSE-1.8" :path "${pkgs.jdk8}/lib/openjdk")
-              (:name "JavaSE-11" :path "${pkgs.jdk11}/lib/openjdk")
-              (:name "JavaSE-17" :path "${pkgs.jdk17}/lib/openjdk")
-            ]
-
-            lsp-java-vmargs
-            `(,@lsp-java-vmargs
-              "-javaagent:/home/charles/.local/share/lombok.jar")
-
-            lsp-java-import-gradle-java-home "${pkgs.jdk11}/lib/openjdk"
-          ))
-      '';
     };
 
     bash = {
@@ -265,17 +247,12 @@
 
     ".gradle/gradle.properties".text = ''
       org.gradle.java.installations.auto-download=false
-      org.gradle.java.installations.paths=${
-        lib.concatMapStringsSep "," (p: "${p}/lib/openjdk")
-        (with pkgs; [jdk8 jdk11 jdk17 jdk])
-      }
     '';
 
     ".local/share/lombok.system.jar".source = "${pkgs.lombok}/share/java/lombok.jar";
   };
 
   home.packages = with pkgs; let
-    jdk8-low = jdk8.overrideAttrs (oldAttrs: {meta.priority = 10;});
     zoom-us-fix = zoom-us.overrideAttrs (attrs: {
       nativeBuildInputs = (attrs.nativeBuildInputs or []) ++ [pkgs.bbe];
       postFixup =
@@ -291,8 +268,6 @@
   in [
     wl-clipboard
     swaylock
-    jdk
-    jdk8-low
     ripgrep
     slack
     bitwarden
@@ -320,7 +295,6 @@
     pandoc
 
     # Language servers
-    jdt-language-server
     yaml-language-server
     nodePackages.vscode-langservers-extracted
     nodePackages.typescript
