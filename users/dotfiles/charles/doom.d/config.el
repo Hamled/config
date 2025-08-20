@@ -121,9 +121,41 @@
                    lsp-file-watch-ignored-directories-global
                    lsp-file-watch-ignored-directories-local))))
 
-(setq projectile-per-project-compilation-buffer t)
+(defun projectile-customizable-project-name (root)
+  (with-temp-buffer
+    (setq default-directory root)
+    (hack-dir-local-variables-non-file-buffer)
+    (or projectile-project-name
+        (projectile-default-project-name root))))
+
+(defun project-type (project)
+  "Return the type the given project."
+  (car project))
+
+(after! projectile
+  (setq projectile-per-project-compilation-buffer t
+        projectile-project-name-function #'projectile-customizable-project-name)
+  (advice-add 'project-name :around
+              (lambda (orig-fun project)
+                (cond
+                 ((eq 'projectile (project-type project))
+                  (funcall projectile-project-name-function
+                           (project-root project)))
+                 (t (apply orig-fun (list project)))))))
+
+(defun workspaces-project-unique-name-advice (orig-fun project-root)
+  (let ((custom-name (funcall projectile-project-name-function
+                              project-root)))
+    (if-let* ((orig-name (apply orig-fun (list project-root)))
+              (parts (split-string orig-name "/" t))
+              (path (cdr parts)))
+        (string-join (append path (list custom-name)) "/")
+      custom-name)))
+
+(after! (projectile persp-mode)
+  (advice-add '+workspaces-project-unique-name :around
+              #'workspaces-project-unique-name-advice))
 
 (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode))
 
-(load "default.el")
 ;;; config.el ends here
