@@ -143,6 +143,19 @@
                            (project-root project)))
                  (t (apply orig-fun (list project)))))))
 
+(defun workspaces-project-unique-name-advice (orig-fun project-root)
+  (let ((custom-name (funcall projectile-project-name-function
+                              project-root)))
+    (if-let* ((orig-name (apply orig-fun (list project-root)))
+              (parts (split-string orig-name "/" t))
+              (path (cdr parts)))
+        (string-join (append path (list custom-name)) "/")
+      custom-name)))
+
+(after! (projectile persp-mode)
+  (advice-add '+workspaces-project-unique-name :around
+              #'workspaces-project-unique-name-advice))
+
 (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode))
 
 ;;; config.el ends here
