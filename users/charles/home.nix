@@ -145,6 +145,22 @@
         }
       '';
     };
+    vscode = {
+      enable = true;
+      profiles.default.extensions = with pkgs.vscode-extensions; [
+        mkhl.direnv
+        dracula-theme.theme-dracula
+        vscodevim.vim
+        gitlab.gitlab-workflow
+        redhat.java
+        vscjava.vscode-java-pack
+        vscjava.vscode-java-dependency
+        vscjava.vscode-gradle
+        vscjava.vscode-java-debug
+        vscjava.vscode-java-test
+        visualstudioexptteam.vscodeintellicode
+      ];
+    };
   };
 
   wayland = {
