@@ -43,6 +43,7 @@
 
     ssh = {
       enable = true;
+      enableDefaultConfig = false;
 
       matchBlocks = let
         defaults = {
@@ -50,6 +51,10 @@
           identitiesOnly = true;
         };
       in {
+        "*" = {
+          compression = true;
+        };
+
         GitHub =
           defaults
           // {
