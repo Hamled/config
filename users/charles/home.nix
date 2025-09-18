@@ -310,8 +310,8 @@
     nodePackages.vscode-langservers-extracted
     nodePackages.typescript
     nodePackages.typescript-language-server
-    nodePackages.dockerfile-language-server-nodejs
     nodePackages.bash-language-server
+    dockerfile-language-server
     #rust-analyzer
     shellcheck
 
