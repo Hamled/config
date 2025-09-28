@@ -105,7 +105,7 @@
   };
 
   virtualisation.docker = let
-    rootless = false;
+    rootless = true;
 
     docker-config = {
       enable = true;
@@ -124,7 +124,13 @@
     {}
     // (
       if rootless
-      then {rootless = docker-config;}
+      then {
+        rootless =
+          docker-config
+          // {
+            setSocketVariable = true;
+          };
+      }
       else docker-config
     );
 
