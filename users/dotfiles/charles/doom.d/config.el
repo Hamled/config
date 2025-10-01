@@ -158,4 +158,15 @@
 
 (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode))
 
+(after! eglot
+  (defun eglot-jdtls-project-config-update (server)
+    "Send a signal to SERVER to update the Java project configuration.
+     When called interactively, use the currently active server"
+    (interactive (list (eglot--current-server-or-lose)))
+    (jsonrpc-notify
+     server :java/projectConfigurationsUpdate
+     (list
+      :identifiers
+      (eglot--TextDocumentIdentifier)))))
+
 ;;; config.el ends here
