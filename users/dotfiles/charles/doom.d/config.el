@@ -156,7 +156,7 @@
   (advice-add '+workspaces-project-unique-name :around
               #'workspaces-project-unique-name-advice))
 
-(set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode))
+(set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode nix-ts-mode))
 
 (after! eglot
   (defun eglot-jdtls-project-config-update (server)
