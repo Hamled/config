@@ -169,4 +169,6 @@
       :identifiers
       (eglot--TextDocumentIdentifier)))))
 
+(setq treesit-auto-install-grammar 'never)
+
 ;;; config.el ends here
