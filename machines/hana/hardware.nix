@@ -4,25 +4,33 @@
   pkgs,
   ...
 }: {
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "thunderbolt" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
-  boot.initrd.kernelModules = ["dm-snapshot" "i915"];
-  boot.kernelParams = ["i915.force_probe=4688"];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
-  # Root is encrypted
-  boot.initrd.luks.devices.sys.device = "/dev/disk/by-uuid/b5b67eb0-d597-4d5c-80fd-952be392ed0b";
-
-  # Custom udev rules for stage 1
-  boot.initrd.extraUdevRulesCommands = let
-    hana-initrd-udev-rules = pkgs.callPackage ./packages/initrd-udev-rules/default.nix {
-      inherit pkgs;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
     };
-  in ''
-    cp -v ${hana-initrd-udev-rules}/lib/udev/rules.d/*.rules $out/
-  '';
+
+    kernelParams = ["i915.force_probe=4688"];
+    kernelModules = ["kvm-intel"];
+    extraModulePackages = [];
+
+    initrd = {
+      availableKernelModules = ["xhci_pci" "nvme" "thunderbolt" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
+      kernelModules = ["dm-snapshot" "i915"];
+
+      # Root is encrypted
+      luks.devices.sys.device = "/dev/disk/by-uuid/b5b67eb0-d597-4d5c-80fd-952be392ed0b";
+
+      # Custom udev rules for stage 1
+      extraUdevRulesCommands = let
+        hana-initrd-udev-rules = pkgs.callPackage ./packages/initrd-udev-rules/default.nix {
+          inherit pkgs;
+        };
+      in ''
+        cp -v ${hana-initrd-udev-rules}/lib/udev/rules.d/*.rules $out/
+      '';
+    };
+  };
 
   # File systems
   fileSystems."/" = {
