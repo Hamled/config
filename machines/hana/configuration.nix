@@ -53,6 +53,8 @@
       extraModules = [pkgs.pulseaudio-modules-bt];
       package = pkgs.pulseaudioFull;
     };
+
+    postfix.enable = true;
   };
 
   programs = {
