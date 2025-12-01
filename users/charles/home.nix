@@ -30,8 +30,13 @@
 
     git = {
       enable = true;
-      userName = "Charles Ellis";
-      userEmail = "hamled@hamled.dev";
+      settings = {
+        init.defaultBranch = "main";
+        user = {
+          name = "Charles Ellis";
+          email = "hamled@hamled.dev";
+        };
+      };
 
       includes = [
         {
@@ -41,8 +46,6 @@
       ];
 
       ignores = [".dir-locals.el" ".projectile"];
-
-      extraConfig.init.defaultBranch = "main";
     };
 
     ssh = {
