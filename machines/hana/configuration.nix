@@ -150,7 +150,7 @@
 
   # Allow delegation in user services
   systemd.packages = [
-    (pkgs.runCommandNoCC "delegate.conf" {
+    (pkgs.runCommand "delegate.conf" {
         preferLocalBuild = true;
         allowSubstitutes = false;
       } ''
