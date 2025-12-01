@@ -30,6 +30,13 @@
         cp -v ${hana-initrd-udev-rules}/lib/udev/rules.d/*.rules $out/
       '';
     };
+
+    swraid = {
+      enable = true;
+      mdadmConf = ''
+        MAILADDR charles
+      '';
+    };
   };
 
   # File systems
