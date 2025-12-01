@@ -92,7 +92,7 @@
       nerd-fonts.ubuntu-sans
       nerd-fonts.ubuntu-mono
       corefonts
-      vistafonts
+      vista-fonts
       noto-fonts
     ];
   };
