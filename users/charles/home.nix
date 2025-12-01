@@ -25,6 +25,7 @@
       enable = true;
       initExtra = ''
         set -o vi
+        MAIL=/var/mail/$USER
       '';
     };
 
@@ -308,6 +309,7 @@
     sbcl
     guile
     pandoc
+    mailutils
 
     awscli2
     kubectl
