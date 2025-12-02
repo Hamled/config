@@ -61,6 +61,7 @@
       in {
         "*" = {
           compression = true;
+          addKeysToAgent = "3h";
         };
 
         GitHub =
