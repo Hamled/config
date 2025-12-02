@@ -14,7 +14,11 @@
   in {
     emacs = {
       enable = true;
-      extraPackages = epkgs: [epkgs.vterm];
+      extraPackages = epkgs:
+        with epkgs; [
+          vterm
+          treesit-grammars.with-all-grammars
+        ];
     };
 
     bash = {
