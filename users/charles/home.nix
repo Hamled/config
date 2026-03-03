@@ -294,7 +294,7 @@
     slurp
     google-chrome
     unzip
-    jetbrains.idea-ultimate
+    jetbrains.idea
     nodejs
     dbeaver-bin
     whois
