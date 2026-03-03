@@ -311,6 +311,8 @@
     guile
     pandoc
     mailutils
+    claude-code
+    claude-code-acp
 
     awscli2
     kubectl

@@ -171,4 +171,10 @@
 
 (setq treesit-auto-install-grammar 'never)
 
+;; Agent shell
+(after! agent-shell
+  (setq agent-shell-anthropic-claude-environment
+        (agent-shell-make-environment-variables :inherit-env t)))
+
+
 ;;; config.el ends here
