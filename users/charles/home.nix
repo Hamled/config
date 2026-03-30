@@ -47,6 +47,8 @@
       ];
 
       ignores = [".dir-locals.el" ".projectile"];
+
+      signing.format = null;
     };
 
     ssh = {
@@ -230,6 +232,8 @@
       package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
     };
+
+    gtk4.theme = null;
   };
 
   fonts.fontconfig.enable = true;
@@ -312,23 +316,23 @@
     pandoc
     mailutils
     claude-code
-    claude-code-acp
+    claude-agent-acp
 
     awscli2
     kubectl
 
     # Language servers
     yaml-language-server
-    nodePackages.vscode-langservers-extracted
-    nodePackages.typescript
-    nodePackages.typescript-language-server
-    nodePackages.bash-language-server
+    vscode-langservers-extracted
+    typescript
+    typescript-language-server
+    bash-language-server
     dockerfile-language-server
     #rust-analyzer
     shellcheck
 
-    nodePackages.eslint
-    nodePackages.prettier
+    eslint
+    prettier
 
     alejandra
     dockfmt
