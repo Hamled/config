@@ -96,6 +96,8 @@
       corefonts
       vista-fonts
       noto-fonts
+      noto-fonts-monochrome-emoji
+      noto-fonts-color-emoji
     ];
   };
 
