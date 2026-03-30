@@ -304,6 +304,7 @@
     unzip
     jetbrains.idea
     nodejs
+    bun
     dbeaver-bin
     whois
     jq
