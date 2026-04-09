@@ -284,6 +284,10 @@
     '';
 
     ".local/share/lombok.system.jar".source = "${pkgs.lombok}/share/java/lombok.jar";
+
+    ".npmrc".text = ''
+      prefix = ''${HOME}/.local/state/npm
+    '';
   };
 
   home.packages = with pkgs; [
@@ -300,6 +304,7 @@
     unzip
     jetbrains.idea
     nodejs
+    bun
     dbeaver-bin
     whois
     jq
