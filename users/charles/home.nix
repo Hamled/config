@@ -125,7 +125,10 @@
       };
     };
 
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
+    };
 
     direnv = {
       config.global = {
