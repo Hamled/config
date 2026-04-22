@@ -46,8 +46,6 @@
         }
       ];
 
-      ignores = [".dir-locals.el" ".projectile"];
-
       signing.format = null;
     };
 
