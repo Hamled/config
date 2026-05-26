@@ -53,58 +53,53 @@
       enable = true;
       enableDefaultConfig = false;
 
-      matchBlocks = let
+      settings = let
         defaults = {
-          forwardAgent = false;
-          identitiesOnly = true;
+          ForwardAgent = false;
+          IdentitiesOnly = true;
         };
       in {
         "*" = {
-          compression = true;
-          addKeysToAgent = "3h";
+          Compression = true;
+          AddKeysToAgent = "3h";
         };
 
-        GitHub =
+        "github.com" =
           defaults
           // {
-            host = "github.com";
-            user = "git";
-            identityFile = "~/.ssh/github_ed25519";
+            User = "git";
+            IdentityFile = "~/.ssh/github_ed25519";
           };
 
-        GitLabCNC =
+        "gitlab_cnc" =
           defaults
           // {
-            host = "gitlab_cnc";
-            hostname = "gitlab.com";
-            user = "git";
-            identityFile = "~/.ssh/gitlab_cnc_ed25519";
+            HostName = "gitlab.com";
+            User = "git";
+            IdentityFile = "~/.ssh/gitlab_cnc_ed25519";
           };
 
-        AWS =
+        "*.amazonaws.com" =
           defaults
           // {
-            host = "*.amazonaws.com";
-            identityFile = "~/.ssh/aws_rsa4k";
-            forwardAgent = true;
+            IdentityFile = "~/.ssh/aws_rsa4k";
+            ForwardAgent = true;
           };
 
-        AdaWeb-Live =
+        "ada-web-live" =
           defaults
           // {
-            host = "ada-web-live";
-            hostname = "adadevelopersacademy.org";
-            user = "bitnami";
-            identityFile = "~/.ssh/ada_live_ed25519";
+            HostName = "adadevelopersacademy.org";
+            User = "bitnami";
+            IdentityFile = "~/.ssh/ada_live_ed25519";
           };
 
-        AdaWeb-Old =
+        "ada-web-old" =
           defaults
           // {
-            host = "ada-web-old";
-            hostname = "old.adadevelopersacademy.org";
-            user = "bitnami";
-            identityFile = "~/.ssh/ada_old_ed25519";
+            HostName = "old.adadevelopersacademy.org";
+            User = "bitnami";
+            IdentityFile = "~/.ssh/ada_old_ed25519";
           };
       };
     };
