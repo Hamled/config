@@ -22,7 +22,8 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 20 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 20))
+      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 20)
+      doom-symbol-font (font-spec :family "Noto Emoji" :weight 'light))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -141,7 +142,16 @@
                  ((eq 'projectile (project-type project))
                   (funcall projectile-project-name-function
                            (project-root project)))
-                 (t (apply orig-fun (list project)))))))
+                 (t (apply orig-fun (list project))))))
+  (put 'projectile-project-name 'safe-local-variable #'stringp)
+
+  ;; Include external project roots defined in dir locals
+  (defvar projectile-external-roots nil)
+  (put 'projectile-external-roots 'safe-local-variable
+       (lambda (val)
+         (and (listp val) (-every #'stringp val))))
+  (cl-defmethod project-external-roots ((_project (head projectile)))
+    projectile-external-roots))
 
 (defun workspaces-project-unique-name-advice (orig-fun project-root)
   (let ((custom-name (funcall projectile-project-name-function
@@ -159,6 +169,23 @@
 (set-formatter! 'alejandra '("alejandra" "--quiet") :modes '(nix-mode nix-ts-mode))
 
 (after! eglot
+  (setf (alist-get '(java-mode java-ts-mode) eglot-server-programs nil nil #'equal)
+        `("jdtls-local" ; Prefer using local customized version of jdtls for Java
+          :initializationOptions
+          ,(lambda (server)
+             (list
+              ;; JDT.ls only accepts workspace folders from init options
+              ;; See: https://github.com/eclipse-jdtls/eclipse.jdt.ls/issues/1245
+              :workspaceFolders
+              (vconcat (mapcar (lambda (folder)
+                                 (plist-get folder :uri))
+                               (eglot-workspace-folders server)))
+              ;; JDT.ls doesn't automatically rebuild after didConfigurationChange
+              ;; however it does allow providing the workspace configuration as an
+              ;; init option, so the initial build can use the correct configuration
+              :settings
+              (eglot--workspace-configuration-plist server)))))
+
   (defun eglot-jdtls-project-config-update (server)
     "Send a signal to SERVER to update the Java project configuration.
      When called interactively, use the currently active server"
