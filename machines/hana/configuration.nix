@@ -128,9 +128,11 @@
       if rootless
       then {
         rootless =
+          lib.recursiveUpdate
           docker-config
-          // {
+          {
             setSocketVariable = true;
+            daemon.settings.dns = ["1.1.1.1" "8.8.8.8"];
           };
       }
       else docker-config

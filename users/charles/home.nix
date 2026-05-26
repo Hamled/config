@@ -46,8 +46,6 @@
         }
       ];
 
-      ignores = [".dir-locals.el" ".projectile"];
-
       signing.format = null;
     };
 
@@ -55,58 +53,37 @@
       enable = true;
       enableDefaultConfig = false;
 
-      matchBlocks = let
+      settings = let
         defaults = {
-          forwardAgent = false;
-          identitiesOnly = true;
+          ForwardAgent = false;
+          IdentitiesOnly = true;
         };
       in {
         "*" = {
-          compression = true;
-          addKeysToAgent = "3h";
+          Compression = true;
+          AddKeysToAgent = "3h";
         };
 
-        GitHub =
+        "github.com" =
           defaults
           // {
-            host = "github.com";
-            user = "git";
-            identityFile = "~/.ssh/github_ed25519";
+            User = "git";
+            IdentityFile = "~/.ssh/github_ed25519";
           };
 
-        GitLabCNC =
+        "gitlab_cnc" =
           defaults
           // {
-            host = "gitlab_cnc";
-            hostname = "gitlab.com";
-            user = "git";
-            identityFile = "~/.ssh/gitlab_cnc_ed25519";
+            HostName = "gitlab.com";
+            User = "git";
+            IdentityFile = "~/.ssh/gitlab_cnc_ed25519";
           };
 
-        AWS =
+        "*.amazonaws.com" =
           defaults
           // {
-            host = "*.amazonaws.com";
-            identityFile = "~/.ssh/aws_rsa4k";
-            forwardAgent = true;
-          };
-
-        AdaWeb-Live =
-          defaults
-          // {
-            host = "ada-web-live";
-            hostname = "adadevelopersacademy.org";
-            user = "bitnami";
-            identityFile = "~/.ssh/ada_live_ed25519";
-          };
-
-        AdaWeb-Old =
-          defaults
-          // {
-            host = "ada-web-old";
-            hostname = "old.adadevelopersacademy.org";
-            user = "bitnami";
-            identityFile = "~/.ssh/ada_old_ed25519";
+            IdentityFile = "~/.ssh/aws_rsa4k";
+            ForwardAgent = true;
           };
       };
     };
@@ -125,7 +102,10 @@
       };
     };
 
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
+    };
 
     direnv = {
       config.global = {
