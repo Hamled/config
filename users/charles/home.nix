@@ -85,22 +85,6 @@
             IdentityFile = "~/.ssh/aws_rsa4k";
             ForwardAgent = true;
           };
-
-        "ada-web-live" =
-          defaults
-          // {
-            HostName = "adadevelopersacademy.org";
-            User = "bitnami";
-            IdentityFile = "~/.ssh/ada_live_ed25519";
-          };
-
-        "ada-web-old" =
-          defaults
-          // {
-            HostName = "old.adadevelopersacademy.org";
-            User = "bitnami";
-            IdentityFile = "~/.ssh/ada_old_ed25519";
-          };
       };
     };
 
