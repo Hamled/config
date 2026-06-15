@@ -275,7 +275,6 @@
     swaylock
     ripgrep
     slack
-    bitwarden-desktop
     pavucontrol
     grim
     zoom-us
