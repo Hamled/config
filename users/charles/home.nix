@@ -189,6 +189,14 @@
         seat = {seat0 = {xcursor_theme = "Adwaita";};};
       };
 
+      # Include this as extra config rather than use the `config.floating` attribute
+      # because we want to also disable floating for some windows
+      extraConfig = ''
+        for_window [app_id="Zoom"] floating enable
+        for_window [app_id="Zoom" title="^Zoom Workplace"] floating disable
+        for_window [app_id="Zoom" title="^Meeting"] floating disable
+      '';
+
       extraSessionCommands = ''
         export SDL_VIDEODRIVER=wayland
         # needs qt5.qtwayland in systemPackages
