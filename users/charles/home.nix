@@ -173,6 +173,7 @@
         modifier = "Mod4";
         fonts = fontsSetting;
         terminal = "alacritty";
+        menu = "${pkgs.wmenu}/bin/wmenu-run";
 
         keybindings = let
           modifier = config.wayland.windowManager.sway.config.modifier;
@@ -309,6 +310,7 @@
     mailutils
     claude-code
     claude-agent-acp
+    wmenu
 
     awscli2
     kubectl
