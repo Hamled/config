@@ -32,11 +32,7 @@
 
   security.pam.services.swaylock = {};
 
-  # Log in via greetd + tuigreet on tty1, then launch Sway. greetd runs the
-  # session through `sh` and sources /etc/profile + ~/.profile, so `sway`
-  # resolves to the home-manager-wrapped binary (carrying --unsupported-gpu
-  # and the session env). Hit F2 in tuigreet to override the command for a
-  # single login (e.g. `sway --debug`).
+  # Log in via greetd + tuigreet on tty1, then launch Sway
   services.greetd = {
     enable = true;
     settings.default_session = {
