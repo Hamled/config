@@ -31,4 +31,13 @@
   programs.openvpn3.enable = true;
 
   security.pam.services.swaylock = {};
+
+  # Log in via greetd + tuigreet on tty1, then launch Sway
+  services.greetd = {
+    enable = true;
+    settings.default_session = {
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd sway";
+      user = "greeter";
+    };
+  };
 }

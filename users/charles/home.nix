@@ -280,6 +280,11 @@
   };
 
   home.packages = with pkgs; [
+    # Send sway's log output to the journal (tagged sway) instead of the tty
+    (lib.hiPrio (writeShellScriptBin "sway" ''
+      exec ${systemd}/bin/systemd-cat --identifier=sway ${config.wayland.windowManager.sway.package}/bin/sway "$@"
+    ''))
+
     wl-clipboard
     swaylock
     ripgrep
